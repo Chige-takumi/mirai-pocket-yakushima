@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Yusei+Magic&display=swap">
+<style>
+  :root{
+    --forest:#1f4d3b; --moss:#3a6d4f; --leaf:#6fa977; --pastel:#cfe4cd;
+    --cream:#f6efd8; --paper:#fbf6e4; --sky:#a8d4e8; --skyDeep:#6ba9c4;
+    --sun:#f3c64a; --orange:#ef8550; --coral:#e36a4d;
+    --ink:#2a2620; --night:#16243a;
+  }
+  body{margin:0;background:#1f2024;}
+  .slide-title{font-family:'Kaisei Decol',serif;font-weight:700;line-height:1.18;letter-spacing:.01em;}
+  .slide-body{font-family:'M PLUS Rounded 1c',sans-serif;font-weight:500;line-height:1.55;}
+  .marker{font-family:'Yusei Magic',sans-serif;}
+  /* tag chip */
+  .tag{display:inline-flex;align-items:center;gap:6px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em;padding:6px 14px;border-radius:999px;}
+  /* gentle floating bg dots */
+  @keyframes drift { 0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)} }
+  @keyframes pop { from{opacity:0;transform:translateY(8px) scale(.96)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes wordFloat { 0%{opacity:0;transform:translateY(14px) scale(.92)} 60%{opacity:1;transform:translateY(-2px) scale(1.02)} 100%{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes breathe {
+    0%,100%{transform:scale(.78);opacity:.55}
+    50%{transform:scale(1.08);opacity:.95}
+  }
+  @keyframes breatheRing {
+    0%,100%{transform:scale(.72);opacity:.35}
+    50%{transform:scale(1.14);opacity:.65}
+  }
+  @keyframes sway { 0%{transform:rotate(-1deg)} 50%{transform:rotate(1.5deg)} 100%{transform:rotate(-1deg)} }
+  @keyframes shimmer { 0%{opacity:.5} 50%{opacity:1} 100%{opacity:.5} }
+  .wc-word{animation:wordFloat .9s both;display:inline-block;font-family:'Kaisei Decol',serif;}
+  .pop{animation:pop .5s both;}
+  /* breathe scoped to slide 20 */
+  section[data-label="20 考える時間"] .breathe-core{animation:breathe 8s ease-in-out infinite;}
+  section[data-label="20 考える時間"] .breathe-ring{animation:breatheRing 8s ease-in-out infinite;}
+  section[data-label="20 考える時間"] .breathe-ring2{animation:breatheRing 8s ease-in-out infinite;animation-delay:-2s;}
+  .leaf-deco{position:absolute;animation:sway 6s ease-in-out infinite;transform-origin:bottom center;}
+  /* hand-drawn underline */
+  .hand-u{position:relative;display:inline-block;}
+  .hand-u::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-6px;height:8px;background:radial-gradient(ellipse at 50% 0%, var(--sun) 0%, var(--sun) 60%, transparent 70%);border-radius:50%;opacity:.85;}
+  /* dotted box (slot) */
+  .slot{border:2px dashed rgba(0,0,0,.18);background:rgba(255,255,255,.55);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-direction:column;color:rgba(0,0,0,.45);font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;}
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="960" height="540" hint-size="100%,100%">
+
+<!-- ════════════════════════════════════════════════════ SLIDE 01 タイトル -->
+<section data-label="01 タイトル" data-screen-label="01 タイトル" data-speaker-notes="さあ、はじまりはじまり！第2回スタートを軽やかに宣言。子どもたちが画面に集まる時間も兼ねて、間をたっぷり取ってOK。" style="background:radial-gradient(120% 95% at 80% 0%, #74b07f 0%, #3d7a52 38%, #1f4d3b 75%, #163a2c 100%);color:#fbf6e4;overflow:hidden;">
+  <!-- soft leaves -->
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
+    <div style="position:absolute;left:-30px;top:-40px;width:240px;height:240px;background:radial-gradient(circle, rgba(255,255,255,.10), transparent 65%);"></div>
+    <div style="position:absolute;right:-40px;bottom:-60px;width:300px;height:300px;background:radial-gradient(circle, rgba(243,198,74,.18), transparent 60%);"></div>
+    <svg viewBox="0 0 60 60" style="position:absolute;left:60px;bottom:60px;width:90px;opacity:.35;" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 C45 18 50 38 30 56 C10 38 15 18 30 5 Z" fill="#cfe4cd"/></svg>
+    <svg viewBox="0 0 60 60" style="position:absolute;right:120px;top:70px;width:60px;opacity:.4;animation:drift 7s ease-in-out infinite;" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 C45 18 50 38 30 56 C10 38 15 18 30 5 Z" fill="#cfe4cd"/></svg>
+  </div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:50px 64px 48px;">
+    <div>
+      <span class="tag" style="background:rgba(251,246,228,.16);color:#fbf6e4;border:1.5px solid rgba(251,246,228,.45);">🌲 未来ポケット × 屋久島 ／ 第 2 回</span>
+    </div>
+    <div>
+      <div class="slide-body" style="font-size:22px;opacity:.85;margin-bottom:14px;">わたしたちの街の</div>
+      <h1 class="slide-title" style="font-size:72px;margin:0;line-height:1.1;">「憲章」<span style="font-size:54px;opacity:.9;">を</span>つくろう！</h1>
+      <div class="slide-body" style="font-size:20px;opacity:.8;margin-top:18px;">2026 ／ 6 ／ 23（火）　18:00 - 18:50　全2回シリーズ・最終回</div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <span class="tag" style="background:#fbf6e4;color:#1f4d3b;">📜 約束をつくる</span>
+      <span class="tag" style="background:#f3c64a;color:#3d2c0c;">💭 みんなで考える</span>
+      <span class="tag" style="background:#a8d4e8;color:#163a4d;">🌲 屋久島とつなぐ</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 02 おかえり -->
+<section data-label="02 おかえり" data-screen-label="02 おかえり" data-speaker-notes="再会のあいさつ。雑談ベース。チャットを温めるための1枚。" style="background:linear-gradient(135deg,#f3c64a 0%,#ef8550 100%);color:#3d2c0c;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
+    <div style="position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.18);"></div>
+    <div style="position:absolute;left:-40px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.14);"></div>
+    <div style="position:absolute;right:32px;top:18px;font-size:32px;animation:drift 5s ease-in-out infinite;">🌞</div>
+    <div style="position:absolute;left:36px;bottom:24px;font-size:28px;animation:drift 6s ease-in-out infinite reverse;">👋</div>
+  </div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 64px;">
+    <div class="slide-body" style="font-size:22px;font-weight:700;letter-spacing:.05em;margin-bottom:16px;opacity:.7;">RE: HELLO 👋</div>
+    <h1 class="slide-title" style="font-size:74px;margin:0 0 18px 0;">おかえり！<br><span style="font-size:48px;">1週間ぶり 🎉</span></h1>
+    <div class="slide-body" style="font-size:24px;margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;">
+      <span style="background:#fbf6e4;padding:10px 18px;border-radius:999px;">「宿題できた人〜？」</span>
+      <span style="background:#fbf6e4;padding:10px 18px;border-radius:999px;">「今日も元気？」</span>
+    </div>
+    <div class="slide-body" style="font-size:20px;margin-top:26px;opacity:.75;">▶ チャットで合図してね（スタンプでもOK！）</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 03 おさらいクイズ -->
+<section data-label="03 おさらいクイズ" data-screen-label="03 おさらいクイズ" data-speaker-notes="深追いせず、雰囲気作りのクイズ。答えは即出してOK。3問テンポよく。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-40px;bottom:-50px;width:240px;height:240px;background:radial-gradient(circle, rgba(243,198,74,.22), transparent 65%);"></div>
+  <div style="position:absolute;inset:0;padding:44px 60px;display:flex;flex-direction:column;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+      <span class="tag" style="background:#f3c64a;color:#3d2c0c;font-size:18px;">🎮 おさらいクイズ！</span>
+      <span class="slide-body" style="font-size:16px;opacity:.6;letter-spacing:.05em;">先週ぶりの記憶テスト　— 全 3 問</span>
+    </div>
+    <h2 class="slide-title" style="font-size:30px;margin:0 0 20px 0;">屋久島のこと、どれくらい覚えてる？</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;">
+      <!-- Q1 -->
+      <div style="background:rgba(251,246,228,.07);border:1.5px solid rgba(251,246,228,.18);border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;">
+        <div class="slide-body" style="font-size:13px;letter-spacing:.1em;opacity:.65;margin-bottom:8px;">Q.01</div>
+        <div class="slide-title" style="font-size:19px;line-height:1.35;margin-bottom:10px;">屋久島って、<br>どこにある？</div>
+        <div style="margin-top:auto;background:#f3c64a;color:#3d2c0c;border-radius:10px;padding:10px 12px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:15px;line-height:1.4;">
+          <span style="display:block;font-size:11px;opacity:.7;margin-bottom:2px;">A.</span>
+          鹿児島県の南、海の上にぽっかり浮かぶ島！
+        </div>
+      </div>
+      <!-- Q2 -->
+      <div style="background:rgba(251,246,228,.07);border:1.5px solid rgba(251,246,228,.18);border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;">
+        <div class="slide-body" style="font-size:13px;letter-spacing:.1em;opacity:.65;margin-bottom:8px;">Q.02</div>
+        <div class="slide-title" style="font-size:19px;line-height:1.35;margin-bottom:10px;">世界遺産 <span style="color:#f3c64a;">3冠</span>！<br>その3つは？</div>
+        <div style="margin-top:auto;background:#f3c64a;color:#3d2c0c;border-radius:10px;padding:10px 12px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;line-height:1.5;">
+          <span style="display:block;font-size:11px;opacity:.7;margin-bottom:2px;">A.</span>
+          世界自然遺産・<br>ユネスコエコパーク・<br>ラムサール条約湿地
+        </div>
+      </div>
+      <!-- Q3 -->
+      <div style="background:rgba(251,246,228,.07);border:1.5px solid rgba(251,246,228,.18);border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;">
+        <div class="slide-body" style="font-size:13px;letter-spacing:.1em;opacity:.65;margin-bottom:8px;">Q.03</div>
+        <div class="slide-title" style="font-size:19px;line-height:1.35;margin-bottom:10px;">屋久島の電気、<br>何でつくってる？</div>
+        <div style="margin-top:auto;background:#f3c64a;color:#3d2c0c;border-radius:10px;padding:10px 12px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:15px;line-height:1.4;">
+          <span style="display:block;font-size:11px;opacity:.7;margin-bottom:2px;">A.</span>
+          ほぼ100％、川の水！💧（水力発電）
+        </div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:14px;opacity:.55;margin-top:14px;text-align:center;">※覚えてなくても全然OK！思い出すきっかけにしよ 🌿</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 04 今日の流れ -->
+<section data-label="04 今日の流れ" data-screen-label="04 今日の流れ" data-speaker-notes="50分の見通し。4ブロックでテンポよく説明。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:44px 56px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:#1f4d3b;color:#fbf6e4;align-self:flex-start;">🗺 TODAY'S FLOW</span>
+    <h2 class="slide-title" style="font-size:36px;margin:14px 0 22px 0;">今日の流れ <span style="font-size:22px;opacity:.55;">— 50 min</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;flex:1;">
+      <div style="background:#fff;border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;position:relative;border-top:6px solid #6fa977;">
+        <div class="slide-body" style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#3a6d4f;">STEP ①</div>
+        <div class="slide-body" style="font-size:14px;color:#3a6d4f;margin-top:2px;">0 - 10 min</div>
+        <div style="font-size:34px;margin:14px 0 6px 0;">📝</div>
+        <div class="slide-title" style="font-size:20px;line-height:1.35;">宿題発表<br>タイム</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;position:relative;border-top:6px solid #ef8550;">
+        <div class="slide-body" style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#c05a2a;">STEP ②</div>
+        <div class="slide-body" style="font-size:14px;color:#c05a2a;margin-top:2px;">10 - 20 min</div>
+        <div style="font-size:34px;margin:14px 0 6px 0;">💭</div>
+        <div class="slide-title" style="font-size:20px;line-height:1.35;">なぜ大切？<br>を深める</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;position:relative;border-top:6px solid #f3c64a;">
+        <div class="slide-body" style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#a8821a;">STEP ③</div>
+        <div class="slide-body" style="font-size:14px;color:#a8821a;margin-top:2px;">20 - 35 min</div>
+        <div style="font-size:34px;margin:14px 0 6px 0;">✍️</div>
+        <div class="slide-title" style="font-size:20px;line-height:1.35;">憲章を<br>つくる</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;position:relative;border-top:6px solid #6ba9c4;">
+        <div class="slide-body" style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#2f6a85;">STEP ④</div>
+        <div class="slide-body" style="font-size:14px;color:#2f6a85;margin-top:2px;">35 - 45 min</div>
+        <div style="font-size:34px;margin:14px 0 6px 0;">🎤</div>
+        <div class="slide-title" style="font-size:20px;line-height:1.35;">発表・<br>まとめ</div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:15px;margin-top:18px;opacity:.6;text-align:center;">ゆっくりでいいよ。途中でトイレ・水分OK 💧</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 05 宿題のおさらい -->
+<section data-label="05 宿題のおさらい" data-screen-label="05 宿題のおさらい" data-speaker-notes="宿題を覚えてない子も大丈夫。フォーマットを再確認して、発表へつなぐ。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:44px 60px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:#3a6d4f;color:#fbf6e4;align-self:flex-start;">HOMEWORK ✏️</span>
+    <h2 class="slide-title" style="font-size:34px;margin:14px 0 6px 0;">先週の宿題、覚えてる？</h2>
+    <div style="background:#fff;border-radius:18px;padding:22px 26px;margin-top:14px;box-shadow:0 6px 18px rgba(31,77,59,.08);">
+      <div class="slide-body" style="font-size:14px;letter-spacing:.08em;color:#3a6d4f;font-weight:700;margin-bottom:6px;">MISSION</div>
+      <div class="slide-title" style="font-size:30px;color:#1f4d3b;line-height:1.3;">自分の街で <span class="hand-u">「大切にしたいもの」</span> を、ひとつ。</div>
+    </div>
+    <div class="slide-body" style="font-size:16px;font-weight:700;margin-top:18px;color:#3a6d4f;">どんな形でOK ↓</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
+      <div style="background:#fff;border:2px solid #cfe4cd;border-radius:12px;padding:14px 12px;text-align:center;">
+        <div style="font-size:30px;">📷</div>
+        <div class="slide-title" style="font-size:18px;margin-top:4px;">写真</div>
+        <div class="slide-body" style="font-size:13px;opacity:.6;margin-top:2px;">スマホでパシャ</div>
+      </div>
+      <div style="background:#fff;border:2px solid #cfe4cd;border-radius:12px;padding:14px 12px;text-align:center;">
+        <div style="font-size:30px;">✏️</div>
+        <div class="slide-title" style="font-size:18px;margin-top:4px;">絵</div>
+        <div class="slide-body" style="font-size:13px;opacity:.6;margin-top:2px;">うまくなくてOK</div>
+      </div>
+      <div style="background:#fff;border:2px solid #cfe4cd;border-radius:12px;padding:14px 12px;text-align:center;">
+        <div style="font-size:30px;">💬</div>
+        <div class="slide-title" style="font-size:18px;margin-top:4px;">言葉</div>
+        <div class="slide-body" style="font-size:13px;opacity:.6;margin-top:2px;">一言でも◎</div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:18px;font-weight:700;margin-top:18px;color:#ef8550;text-align:center;">▶ 準備できた人から発表しよう！</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 06 発表のルール -->
+<section data-label="06 発表のルール" data-screen-label="06 発表のルール" data-speaker-notes="3つだけ伝えればOK。話し方の上手さは関係ないことを強調。" style="background:linear-gradient(160deg,#fce98c 0%,#f3c64a 100%);color:#3d2c0c;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.25);"></div>
+  <div style="position:absolute;inset:0;padding:44px 60px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:#1f4d3b;color:#fbf6e4;align-self:flex-start;">🎤 FOR THE SPEAKER</span>
+    <h2 class="slide-title" style="font-size:38px;margin:14px 0 6px 0;">発表してくれる人へ</h2>
+    <div class="slide-body" style="font-size:18px;opacity:.7;">この3つだけ伝えればOK！</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px;flex:1;">
+      <div style="background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;position:relative;">
+        <div class="slide-title" style="font-size:48px;color:#ef8550;line-height:1;">①</div>
+        <div class="slide-title" style="font-size:30px;margin-top:6px;color:#1f4d3b;">なに</div>
+        <div class="slide-body" style="font-size:15px;opacity:.7;margin-top:8px;">見つけた「大切」は<br>どんなもの？</div>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;">
+        <div class="slide-title" style="font-size:48px;color:#ef8550;line-height:1;">②</div>
+        <div class="slide-title" style="font-size:30px;margin-top:6px;color:#1f4d3b;">どこ</div>
+        <div class="slide-body" style="font-size:15px;opacity:.7;margin-top:8px;">それは街のどのへんに<br>あるのかな？</div>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;">
+        <div class="slide-title" style="font-size:48px;color:#ef8550;line-height:1;">③</div>
+        <div class="slide-title" style="font-size:30px;margin-top:6px;color:#1f4d3b;">なんで</div>
+        <div class="slide-body" style="font-size:15px;opacity:.7;margin-top:8px;">どうして<br>大切なんだろう？</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,.55);border-radius:12px;padding:12px 18px;margin-top:18px;text-align:center;">
+      <span class="slide-body" style="font-size:18px;font-weight:700;">うまく話さなくてOK！</span>
+      <span class="slide-body" style="font-size:18px;opacity:.7;">　自分の言葉で大丈夫だよ 🌱</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 07 発表タイム① -->
+<section data-label="07 発表タイム①" data-screen-label="07 発表タイム①" data-speaker-notes="参加者の宿題を投影。ファシリが氏名・コメントをその場で追記する。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:36px 56px;display:flex;flex-direction:column;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="tag" style="background:#ef8550;color:#fff;font-size:18px;">🎤 発表タイム</span>
+      <span class="slide-body" style="font-size:18px;font-weight:700;color:#ef8550;">No.<span style="font-size:32px;">1</span></span>
+    </div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:18px;flex:1;">
+      <div class="slot" style="font-size:18px;">
+        <div style="font-size:50px;margin-bottom:8px;opacity:.5;">📷</div>
+        <div>写真 / 絵 を ここに</div>
+        <div style="font-size:13px;opacity:.7;margin-top:4px;">（ファシリが当日差し替え）</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:#fff;border-radius:12px;padding:14px 16px;border-left:6px solid #6fa977;">
+          <div class="slide-body" style="font-size:13px;font-weight:700;color:#3a6d4f;letter-spacing:.05em;margin-bottom:2px;">NAME</div>
+          <div class="slide-title" style="font-size:24px;color:#1f4d3b;">　　　　　　 さん</div>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:14px 16px;border-left:6px solid #ef8550;flex:1;">
+          <div class="slide-body" style="font-size:13px;font-weight:700;color:#c05a2a;letter-spacing:.05em;margin-bottom:6px;">COMMENT</div>
+          <div class="slide-body" style="font-size:15px;color:#2a2620;opacity:.5;line-height:1.6;">なに / どこ / なんで大切<br>を、ここに書き込もう。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 08 発表タイム② -->
+<section data-label="08 発表タイム②" data-screen-label="08 発表タイム②" data-speaker-notes="同テンプレートで2人目。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:36px 56px;display:flex;flex-direction:column;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="tag" style="background:#ef8550;color:#fff;font-size:18px;">🎤 発表タイム</span>
+      <span class="slide-body" style="font-size:18px;font-weight:700;color:#ef8550;">No.<span style="font-size:32px;">2</span></span>
+    </div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:18px;flex:1;">
+      <div class="slot" style="font-size:18px;">
+        <div style="font-size:50px;margin-bottom:8px;opacity:.5;">📷</div>
+        <div>写真 / 絵 を ここに</div>
+        <div style="font-size:13px;opacity:.7;margin-top:4px;">（ファシリが当日差し替え）</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:#fff;border-radius:12px;padding:14px 16px;border-left:6px solid #6fa977;">
+          <div class="slide-body" style="font-size:13px;font-weight:700;color:#3a6d4f;letter-spacing:.05em;margin-bottom:2px;">NAME</div>
+          <div class="slide-title" style="font-size:24px;color:#1f4d3b;">　　　　　　 さん</div>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:14px 16px;border-left:6px solid #ef8550;flex:1;">
+          <div class="slide-body" style="font-size:13px;font-weight:700;color:#c05a2a;letter-spacing:.05em;margin-bottom:6px;">COMMENT</div>
+          <div class="slide-body" style="font-size:15px;color:#2a2620;opacity:.5;line-height:1.6;">なに / どこ / なんで大切<br>を、ここに書き込もう。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 09 発表タイム③ -->
+<section data-label="09 発表タイム③" data-screen-label="09 発表タイム③" data-speaker-notes="同テンプレートで3人目。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:36px 56px;display:flex;flex-direction:column;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="tag" style="background:#ef8550;color:#fff;font-size:18px;">🎤 発表タイム</span>
+      <span class="slide-body" style="font-size:18px;font-weight:700;color:#ef8550;">No.<span style="font-size:32px;">3</span></span>
+    </div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:18px;flex:1;">
+      <div class="slot" style="font-size:18px;">
+        <div style="font-size:50px;margin-bottom:8px;opacity:.5;">📷</div>
+        <div>写真 / 絵 を ここに</div>
+        <div style="font-size:13px;opacity:.7;margin-top:4px;">（ファシリが当日差し替え）</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:#fff;border-radius:12px;padding:14px 16px;border-left:6px solid #6fa977;">
+          <div class="slide-body" style="font-size:13px;font-weight:700;color:#3a6d4f;letter-spacing:.05em;margin-bottom:2px;">NAME</div>
+          <div class="slide-title" style="font-size:24px;color:#1f4d3b;">　　　　　　 さん</div>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:14px 16px;border-left:6px solid #ef8550;flex:1;">
+          <div class="slide-body" style="font-size:13px;font-weight:700;color:#c05a2a;letter-spacing:.05em;margin-bottom:6px;">COMMENT</div>
+          <div class="slide-body" style="font-size:15px;color:#2a2620;opacity:.5;line-height:1.6;">なに / どこ / なんで大切<br>を、ここに書き込もう。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 10 ワードクラウド -->
+<section data-label="10 みんなの大切" data-screen-label="10 みんなの大切" data-speaker-notes="少し間を置いて、語りかけるように。「ぜんぶ、誰かの大切」のフレーズはしっかり言う。" style="background:radial-gradient(120% 100% at 50% 60%, #1b2c4d 0%, #0e1a30 70%, #060c1c 100%);color:#fbf6e4;overflow:hidden;">
+  <!-- twinkling stars -->
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
+    <div style="position:absolute;top:8%;left:10%;width:3px;height:3px;background:#fff;border-radius:50%;animation:shimmer 3s ease-in-out infinite;"></div>
+    <div style="position:absolute;top:18%;left:78%;width:2px;height:2px;background:#fff;border-radius:50%;animation:shimmer 4s ease-in-out infinite;animation-delay:.5s;"></div>
+    <div style="position:absolute;top:30%;left:30%;width:2px;height:2px;background:#fff;border-radius:50%;animation:shimmer 2.6s ease-in-out infinite;animation-delay:1s;"></div>
+    <div style="position:absolute;top:70%;left:85%;width:3px;height:3px;background:#fff;border-radius:50%;animation:shimmer 3.4s ease-in-out infinite;"></div>
+    <div style="position:absolute;top:80%;left:18%;width:2px;height:2px;background:#fff;border-radius:50%;animation:shimmer 2.2s ease-in-out infinite;animation-delay:.8s;"></div>
+    <div style="position:absolute;top:50%;left:6%;width:2px;height:2px;background:#fff;border-radius:50%;animation:shimmer 3.8s ease-in-out infinite;"></div>
+  </div>
+  <div style="position:absolute;inset:0;padding:36px 60px;display:flex;flex-direction:column;">
+    <div class="slide-body" style="font-size:14px;letter-spacing:.15em;opacity:.55;">EVERYONE'S "TAISETSU"</div>
+    <h2 class="slide-title" style="font-size:30px;margin:6px 0 0 0;">みんなの「大切」を、集めてみると…</h2>
+    <!-- word cloud (re-rendered from localStorage by script below) -->
+    <div id="s10-cloud" style="position:relative;flex:1;margin-top:8px;"></div>
+    <div class="slide-body" style="font-size:22px;font-weight:700;text-align:center;animation:pop .6s .4s both;">ぜんぶ、<span style="color:#f3c64a;">誰かの大切。</span></div>
+    <!-- presenter edit button -->
+    <button id="s10-edit" type="button" title="チャットの言葉を入力（キー: E）" style="position:absolute;right:12px;top:8px;background:rgba(251,246,228,.14);color:#fbf6e4;border:1px solid rgba(251,246,228,.3);border-radius:999px;padding:4px 12px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:11px;letter-spacing:.05em;cursor:pointer;backdrop-filter:blur(4px);z-index:3;">✏ 言葉を入力 (E)</button>
+  </div>
+  <!-- presenter editor modal -->
+  <div id="s10-modal" style="display:none;position:absolute;inset:0;background:rgba(8,16,28,.88);backdrop-filter:blur(6px);z-index:10;padding:30px 50px;flex-direction:column;">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:18px;">
+      <div>
+        <div class="slide-body" style="font-size:12px;letter-spacing:.18em;color:#f3c64a;font-weight:700;">PRESENTER ／ チャットの言葉を入力</div>
+        <div class="slide-title" style="font-size:22px;color:#fbf6e4;margin-top:4px;">改行 or カンマ区切りで貼り付け</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button id="s10-cancel" type="button" style="background:transparent;color:#fbf6e4;border:1px solid rgba(251,246,228,.4);border-radius:999px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">キャンセル</button>
+        <button id="s10-apply" type="button" style="background:#f3c64a;color:#3d2c0c;border:0;border-radius:999px;padding:8px 20px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:800;font-size:14px;cursor:pointer;">適用する ✓</button>
+      </div>
+    </div>
+    <textarea id="s10-input" placeholder="公園&#10;家族&#10;友だち&#10;…" style="margin-top:14px;flex:1;background:rgba(251,246,228,.06);color:#fbf6e4;border:1.5px solid rgba(251,246,228,.25);border-radius:12px;padding:14px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-size:17px;line-height:1.6;resize:none;outline:none;"></textarea>
+    <div class="slide-body" style="font-size:11px;color:#cfe4cd;opacity:.7;margin-top:6px;">※ 入力はブラウザに保存されます　／　空欄で「適用」するとデフォルトに戻ります</div>
+  </div>
+  <script>
+  (function(){
+    const DEFAULT_WORDS = ['公園','家族','友だち','川','木','学校','お店','神社','図書館','給食','お祭り','犬'];
+    const COLORS = ['#f3c64a','#a8d4e8','#fbf6e4','#cfe4cd','#ef8550','#f3c64a','#a8d4e8','#fbf6e4','#cfe4cd','#fbf6e4','#f3c64a','#a8d4e8','#ef8550','#cfe4cd','#f3c64a','#a8d4e8'];
+    const KEY = 'mp-yks2-s10-words';
+    function getWords(){
+      const raw = (localStorage.getItem(KEY) || '').trim();
+      if(!raw) return DEFAULT_WORDS;
+      const arr = raw.split(/[\n,、，]+/).map(s=>s.trim()).filter(Boolean);
+      return arr.length ? arr : DEFAULT_WORDS;
+    }
+    function layout(words){
+      const cloud = document.getElementById('s10-cloud');
+      if(!cloud) return;
+      cloud.innerHTML = '';
+      const n = words.length;
+      function sizeFor(i){
+        if(i < Math.max(1, Math.floor(n*0.2))) return 54 + Math.random()*8;
+        if(i < Math.max(3, Math.floor(n*0.55))) return 34 + Math.random()*10;
+        return 22 + Math.random()*8;
+      }
+      const rows = Math.max(3, Math.ceil(Math.sqrt(n*0.85)));
+      const cols = Math.ceil(n / rows);
+      const cellW = 100 / cols, cellH = 100 / rows;
+      const order = words.slice().map((w,i)=>({w,i,size:sizeFor(i)}))
+        .sort((a,b)=> b.size - a.size);
+      const slots = [];
+      for(let r=0; r<rows; r++) for(let c=0; c<cols; c++) slots.push({r,c});
+      const cr = (rows-1)/2, cc = (cols-1)/2;
+      slots.sort((a,b)=>{
+        const da = Math.hypot(a.r-cr, a.c-cc), db = Math.hypot(b.r-cr, b.c-cc);
+        return da - db;
+      });
+      order.forEach((item, idx) => {
+        const slot = slots[idx % slots.length];
+        const jitterX = (Math.random()-0.5) * cellW * 0.4;
+        const jitterY = (Math.random()-0.5) * cellH * 0.4;
+        const left = slot.c * cellW + cellW*0.5 + jitterX;
+        const top  = slot.r * cellH + cellH*0.5 + jitterY;
+        const span = document.createElement('span');
+        span.className = 'wc-word';
+        span.textContent = item.w;
+        span.style.position = 'absolute';
+        span.style.left = Math.max(4, Math.min(94, left)) + '%';
+        span.style.top  = Math.max(6, Math.min(86, top))  + '%';
+        span.style.transform = 'translate(-50%,-50%)';
+        span.style.fontSize = item.size.toFixed(0) + 'px';
+        span.style.color = COLORS[item.i % COLORS.length];
+        span.style.whiteSpace = 'nowrap';
+        span.style.animationDelay = (0.08 * idx) + 's';
+        cloud.appendChild(span);
+      });
+    }
+    function bind(){
+      const root = document.querySelector('section[data-label="10 みんなの大切"]');
+      if(!root || root.dataset.s10Bound) return;
+      if(!document.getElementById('s10-cloud')) return;
+      root.dataset.s10Bound = '1';
+      layout(getWords());
+      const editBtn = document.getElementById('s10-edit');
+      const modal = document.getElementById('s10-modal');
+      const input = document.getElementById('s10-input');
+      const applyBtn = document.getElementById('s10-apply');
+      const cancelBtn = document.getElementById('s10-cancel');
+      function open(){
+        input.value = localStorage.getItem(KEY) || DEFAULT_WORDS.join('\n');
+        modal.style.display = 'flex';
+        setTimeout(()=>input.focus(), 50);
+      }
+      function close(){ modal.style.display = 'none'; }
+      function apply(){
+        const v = input.value.trim();
+        if(v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY);
+        close();
+        layout(getWords());
+      }
+      editBtn.addEventListener('click', open);
+      applyBtn.addEventListener('click', apply);
+      cancelBtn.addEventListener('click', close);
+      window.addEventListener('keydown', (e)=>{
+        const section = document.querySelector('section[data-label="10 みんなの大切"]');
+        if(!section || section.offsetParent === null) return;
+        if(e.key && e.key.toLowerCase() === 'e' && modal.style.display === 'none' && document.activeElement !== input){
+          e.preventDefault(); open();
+        } else if(e.key === 'Escape' && modal.style.display === 'flex'){
+          close();
+        }
+      });
+    }
+    if(document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(bind, 250);
+    else document.addEventListener('DOMContentLoaded', bind);
+    setTimeout(bind, 1200);
+  })();
+  </script>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 11 問い① -->
+<section data-label="11 問い①" data-screen-label="11 問い①" data-speaker-notes="想像をジャンプさせる問い。少し沈黙の時間を取って、子どもたちが想像してから話す。" style="background:linear-gradient(140deg,#f3c64a 0%,#ef8550 60%,#e36a4d 100%);color:#3d2c0c;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;">
+    <div style="position:absolute;right:-50px;top:-50px;width:220px;height:220px;border-radius:50%;background:rgba(251,246,228,.18);"></div>
+    <div style="position:absolute;left:-30px;bottom:-50px;width:180px;height:180px;border-radius:50%;background:rgba(0,0,0,.06);"></div>
+  </div>
+  <div style="position:absolute;inset:0;padding:50px 60px;display:flex;flex-direction:column;justify-content:center;">
+    <div class="slide-body" style="font-size:16px;letter-spacing:.15em;opacity:.6;font-weight:700;">QUESTION 01 ／ ちょっと、想像してみて</div>
+    <h1 class="slide-title" style="font-size:54px;margin:18px 0 0 0;line-height:1.25;">もしそれが、<br><span style="background:linear-gradient(transparent 60%, rgba(251,246,228,.7) 60%);">なくなったら</span> どうなる？</h1>
+    <div class="slide-body" style="font-size:22px;margin-top:24px;line-height:1.6;opacity:.8;">公園が消えたら？　お気に入りのお店が閉まったら？<br>毎日通る道が、ちがう道になったら？</div>
+    <div class="slide-body" style="font-size:18px;margin-top:20px;background:rgba(251,246,228,.85);color:#3d2c0c;padding:12px 18px;border-radius:999px;align-self:flex-start;font-weight:700;">▶ 思いついたら、チャットに書いてみよう</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 12 屋久島も同じ -->
+<section data-label="12 屋久島も同じ" data-screen-label="12 屋久島も同じ" data-speaker-notes="屋久島の人も、同じことを感じて約束をつくった、という流れに繋ぐ。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;left:-50px;top:-50px;width:220px;height:220px;background:radial-gradient(circle, rgba(243,198,74,.15), transparent 65%);"></div>
+  <div style="position:absolute;inset:0;padding:42px 60px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:rgba(251,246,228,.18);color:#fbf6e4;border:1.5px solid rgba(251,246,228,.3);align-self:flex-start;">🌲 YAKUSHIMA</span>
+    <h2 class="slide-title" style="font-size:32px;margin:14px 0 4px 0;">屋久島の人たちも、<span style="color:#f3c64a;">同じこと</span>を考えた。</h2>
+    <div class="slide-body" style="font-size:15px;opacity:.65;">— だから「屋久島憲章」をつくった（覚えてる？）</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px;flex:1;">
+      <div style="background:rgba(251,246,228,.06);border:1.5px solid rgba(251,246,228,.16);border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;">
+        <div style="font-size:30px;">💧</div>
+        <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;margin-top:6px;">憲章 ①</div>
+        <div class="slide-title" style="font-size:19px;line-height:1.35;margin-top:4px;">水の環境を<br>守る</div>
+      </div>
+      <div style="background:rgba(251,246,228,.06);border:1.5px solid rgba(251,246,228,.16);border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;">
+        <div style="font-size:30px;">🌱</div>
+        <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;margin-top:6px;">憲章 ②</div>
+        <div class="slide-title" style="font-size:19px;line-height:1.35;margin-top:4px;">子どもが<br>夢を持てる<br>地域に</div>
+      </div>
+      <div style="background:rgba(251,246,228,.06);border:1.5px solid rgba(251,246,228,.16);border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;">
+        <div style="font-size:30px;">⛩️</div>
+        <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;margin-top:6px;">憲章 ③</div>
+        <div class="slide-title" style="font-size:19px;line-height:1.35;margin-top:4px;">歴史や伝統を<br>大切に</div>
+      </div>
+      <div style="background:rgba(251,246,228,.06);border:1.5px solid rgba(251,246,228,.16);border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;">
+        <div style="font-size:30px;">🌏</div>
+        <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;margin-top:6px;">憲章 ④</div>
+        <div class="slide-title" style="font-size:19px;line-height:1.35;margin-top:4px;">世界の人と<br>交流する</div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:22px;font-weight:700;margin-top:18px;text-align:center;color:#f3c64a;">失いたくない。<span style="color:#fbf6e4;opacity:.85;">— だから、約束にした。</span></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 13 問い② -->
+<section data-label="13 問い②" data-screen-label="13 問い②" data-speaker-notes="想像を時間軸で大きくジャンプさせる。100年。" style="background:linear-gradient(160deg,#cce8f3 0%,#a8d4e8 60%,#7fbcd6 100%);color:#163a4d;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;">
+    <div style="position:absolute;right:24px;top:14px;font-size:46px;opacity:.35;animation:drift 8s ease-in-out infinite;">☁️</div>
+    <div style="position:absolute;left:24px;bottom:30px;font-size:42px;opacity:.4;animation:drift 6s ease-in-out infinite reverse;">☁️</div>
+    <div style="position:absolute;right:60px;bottom:24px;font-size:36px;opacity:.4;animation:drift 7s ease-in-out infinite;">☁️</div>
+  </div>
+  <div style="position:absolute;inset:0;padding:50px 60px;display:flex;flex-direction:column;justify-content:center;">
+    <div class="slide-body" style="font-size:16px;letter-spacing:.15em;opacity:.6;font-weight:700;">QUESTION 02 ／ ぐーんと、未来へ</div>
+    <h1 class="slide-title" style="font-size:62px;margin:18px 0 0 0;line-height:1.2;">
+      <span style="font-size:78px;color:#1f4d3b;">100年後</span>も、<br>あってほしい？
+    </h1>
+    <div class="slide-body" style="font-size:20px;margin-top:24px;line-height:1.6;opacity:.75;">
+      みんなが大人になって、<br>その子どもが大人になって、<br>そのまた子どもが大人になっても。
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 14 100年前と100年後 -->
+<section data-label="14 100年前と100年後" data-screen-label="14 100年前と100年後" data-speaker-notes="バトンをつなぐ感覚。100年前の人が守ってくれたから、今がある。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:42px 56px;display:flex;flex-direction:column;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <h2 class="slide-title" style="font-size:30px;margin:0;">100年前 ←→ 100年後</h2>
+      <span class="slide-body" style="font-size:14px;opacity:.55;letter-spacing:.1em;">PAST · NOW · FUTURE</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:18px;margin-top:20px;flex:1;align-items:stretch;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="slot" style="flex:1;background:repeating-linear-gradient(45deg,#e8e0c4 0 8px,#ede5cc 8px 16px);color:#6b5e3a;padding:12px;text-align:center;">
+          <div style="font-size:32px;opacity:.6;">📷</div>
+          <div style="font-size:13px;margin-top:4px;font-weight:700;">100年前の屋久島</div>
+          <div style="font-size:10px;margin-top:8px;opacity:.7;line-height:1.4;text-align:left;background:rgba(255,255,255,.5);border-radius:6px;padding:8px;font-family:'M PLUS Rounded 1c',sans-serif;">
+            <b style="color:#3a6d4f;">📝 ChatGPT Image 2.0 用プロンプト：</b><br>
+            "A sepia-toned vintage photograph from around 1920s Yakushima island, Japan. A small fishing village at the foot of dense ancient cedar forest. People in traditional Meiji-era clothing walking on a dirt path, wooden houses with thatched roofs, distant misty mountains, soft grainy film texture, slightly faded, documentary photo style."
+          </div>
+        </div>
+        <div class="slide-body" style="font-size:14px;text-align:center;color:#3a6d4f;font-weight:700;">100 YEARS AGO</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <div style="width:48px;height:48px;border-radius:50%;background:#f3c64a;display:flex;align-items:center;justify-content:center;color:#3d2c0c;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:800;font-size:22px;">今</div>
+        <div style="width:2px;height:80px;background:linear-gradient(to bottom, #ef8550, transparent);margin-top:8px;"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="slot" style="flex:1;background:linear-gradient(160deg,#dbe9d8,#cfe4cd);color:#3a6d4f;padding:12px;text-align:center;">
+          <div style="font-size:32px;opacity:.7;">🎨</div>
+          <div style="font-size:13px;margin-top:4px;font-weight:700;">100年後の屋久島（想像）</div>
+          <div style="font-size:10px;margin-top:8px;opacity:.85;line-height:1.4;text-align:left;background:rgba(255,255,255,.6);border-radius:6px;padding:8px;font-family:'M PLUS Rounded 1c',sans-serif;">
+            <b style="color:#3a6d4f;">📝 ChatGPT Image 2.0 用プロンプト：</b><br>
+            "A hopeful, painterly illustration of Yakushima island 100 years in the future. Ancient cedar forest still thriving, clear flowing rivers, children playing near small eco-friendly wooden village houses powered by sustainable energy, soft sunlight filtering through trees, harmony of nature and people, Ghibli-inspired warm watercolor style, gentle green and golden tones."
+          </div>
+        </div>
+        <div class="slide-body" style="font-size:14px;text-align:center;color:#3a6d4f;font-weight:700;">100 YEARS AHEAD</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:24px;margin-top:18px;">
+      <div class="slide-body" style="font-size:17px;font-weight:700;color:#3a6d4f;">100年前の人が守ってくれたから、<span style="color:#ef8550;">今がある。</span></div>
+      <div class="slide-body" style="font-size:17px;font-weight:700;color:#3a6d4f;text-align:right;">100年後の人に、<span style="color:#ef8550;">何を残せる？</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 15 約束のはじまり -->
+<section data-label="15 約束のはじまり" data-screen-label="15 約束のはじまり" data-speaker-notes="3段の階段で「守りたい気持ち」が「約束」になる流れを見せる。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:46px 60px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:#3a6d4f;color:#fbf6e4;align-self:flex-start;">💚 THE BEGINNING</span>
+    <h2 class="slide-title" style="font-size:34px;margin:14px 0 4px 0;">守りたい気持ち <span style="color:#ef8550;">＝</span> 約束のはじまり</h2>
+    <div class="slide-body" style="font-size:16px;opacity:.6;">気持ちが、ちょっとずつ、ことばになっていく</div>
+    <div style="display:flex;align-items:stretch;gap:14px;margin-top:24px;flex:1;">
+      <div style="flex:1;background:#fff;border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:center;position:relative;">
+        <div class="slide-body" style="font-size:13px;color:#3a6d4f;font-weight:700;letter-spacing:.1em;">STEP 1</div>
+        <div class="slide-title" style="font-size:24px;color:#1f4d3b;margin-top:6px;line-height:1.4;">大切だなと<br>思う。</div>
+        <div style="position:absolute;top:14px;right:14px;font-size:24px;">💭</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:36px;color:#ef8550;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:800;">→</div>
+      <div style="flex:1;background:#fff;border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:center;position:relative;">
+        <div class="slide-body" style="font-size:13px;color:#3a6d4f;font-weight:700;letter-spacing:.1em;">STEP 2</div>
+        <div class="slide-title" style="font-size:24px;color:#1f4d3b;margin-top:6px;line-height:1.4;">ずっと<br>あってほしい。</div>
+        <div style="position:absolute;top:14px;right:14px;font-size:24px;">✨</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:36px;color:#ef8550;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:800;">→</div>
+      <div style="flex:1;background:#1f4d3b;color:#fbf6e4;border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:center;position:relative;">
+        <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;letter-spacing:.1em;">STEP 3</div>
+        <div class="slide-title" style="font-size:24px;margin-top:6px;line-height:1.4;">だから、<br>約束にする。</div>
+        <div style="position:absolute;top:14px;right:14px;font-size:24px;">📜</div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:20px;font-weight:700;color:#1f4d3b;text-align:center;margin-top:20px;">これが <span class="hand-u">「憲章」</span> のはじまり。</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 16 おさらい：屋久島憲章 -->
+<section data-label="16 屋久島憲章おさらい" data-screen-label="16 屋久島憲章おさらい" data-speaker-notes="第1回で習った屋久島憲章を、もう一度。これと同じ形でつくってみよう、と橋渡し。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:42px 56px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:#f3c64a;color:#3d2c0c;align-self:flex-start;">📖 RECAP</span>
+    <h2 class="slide-title" style="font-size:32px;margin:14px 0 4px 0;">おさらい：<span style="color:#f3c64a;">屋久島憲章</span></h2>
+    <div class="slide-body" style="font-size:15px;opacity:.65;">これと同じように、自分たちの街でつくってみよう！</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;flex:1;">
+      <div style="background:rgba(251,246,228,.08);border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:center;">
+        <div style="font-size:38px;">💧</div>
+        <div>
+          <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;">YAKUSHIMA CHARTER ①</div>
+          <div class="slide-title" style="font-size:22px;margin-top:2px;">水の環境を守る</div>
+        </div>
+      </div>
+      <div style="background:rgba(251,246,228,.08);border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:center;">
+        <div style="font-size:38px;">🌱</div>
+        <div>
+          <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;">YAKUSHIMA CHARTER ②</div>
+          <div class="slide-title" style="font-size:22px;margin-top:2px;">子どもが夢を持てる地域に</div>
+        </div>
+      </div>
+      <div style="background:rgba(251,246,228,.08);border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:center;">
+        <div style="font-size:38px;">⛩️</div>
+        <div>
+          <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;">YAKUSHIMA CHARTER ③</div>
+          <div class="slide-title" style="font-size:22px;margin-top:2px;">歴史や伝統を大切にする</div>
+        </div>
+      </div>
+      <div style="background:rgba(251,246,228,.08);border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:center;">
+        <div style="font-size:38px;">🌏</div>
+        <div>
+          <div class="slide-body" style="font-size:13px;color:#f3c64a;font-weight:700;">YAKUSHIMA CHARTER ④</div>
+          <div class="slide-title" style="font-size:22px;margin-top:2px;">世界の人と交流する</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 17 約束をつくろう -->
+<section data-label="17 約束をつくろう" data-screen-label="17 約束をつくろう" data-speaker-notes="ワークの導入。3つの「OK」で安心感を作る。" style="background:linear-gradient(150deg,#f3c64a 0%,#ef8550 100%);color:#3d2c0c;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-40px;bottom:-40px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.18);"></div>
+  <div style="position:absolute;inset:0;padding:46px 60px;display:flex;flex-direction:column;">
+    <div class="slide-body" style="font-size:16px;letter-spacing:.15em;font-weight:700;opacity:.7;">LET'S MAKE OURS</div>
+    <h1 class="slide-title" style="font-size:60px;margin:10px 0 6px 0;line-height:1.15;">✍️ わたしたちも<br>約束をつくろう！</h1>
+    <div class="slide-body" style="font-size:18px;opacity:.75;margin-top:10px;">自分の街への、はじめての約束 ✨</div>
+    <div style="display:flex;gap:14px;margin-top:auto;">
+      <div style="flex:1;background:#fbf6e4;border-radius:14px;padding:16px;text-align:center;">
+        <div class="slide-title" style="font-size:26px;color:#1f4d3b;">ひとつでOK</div>
+        <div class="slide-body" style="font-size:14px;opacity:.7;margin-top:4px;">いっぱい考えなくていい</div>
+      </div>
+      <div style="flex:1;background:#fbf6e4;border-radius:14px;padding:16px;text-align:center;">
+        <div class="slide-title" style="font-size:26px;color:#1f4d3b;">短くてOK</div>
+        <div class="slide-body" style="font-size:14px;opacity:.7;margin-top:4px;">一行でじゅうぶん</div>
+      </div>
+      <div style="flex:1;background:#fbf6e4;border-radius:14px;padding:16px;text-align:center;">
+        <div class="slide-title" style="font-size:26px;color:#1f4d3b;">うまくなくてOK</div>
+        <div class="slide-body" style="font-size:14px;opacity:.7;margin-top:4px;">自分の言葉が一番いい</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 18 書き方テンプレ -->
+<section data-label="18 書き方テンプレ" data-screen-label="18 書き方テンプレ" data-speaker-notes="型はあくまでヒント。3つの型を見せて、書き始めのハードルを下げる。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:46px 60px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:#ef8550;color:#fff;align-self:flex-start;">📝 TEMPLATE</span>
+    <h2 class="slide-title" style="font-size:34px;margin:14px 0 4px 0;">こんな書き方が、できるよ</h2>
+    <div class="slide-body" style="font-size:16px;opacity:.6;">〇〇に、自分の「大切」を入れてみよう</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;flex:1;">
+      <div style="background:#fff;border-radius:14px;padding:18px;display:flex;flex-direction:column;border-bottom:6px solid #6fa977;">
+        <div class="slide-body" style="font-size:13px;letter-spacing:.1em;color:#3a6d4f;font-weight:700;">TEMPLATE ①</div>
+        <div class="slide-title" style="font-size:24px;color:#1f4d3b;margin-top:10px;line-height:1.5;">
+          <span style="background:#fff7c2;padding:0 6px;">〇〇</span>な街にする
+        </div>
+        <div class="slide-body" style="font-size:13px;opacity:.55;margin-top:auto;padding-top:10px;">例：あったかい街にする</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px;display:flex;flex-direction:column;border-bottom:6px solid #ef8550;">
+        <div class="slide-body" style="font-size:13px;letter-spacing:.1em;color:#c05a2a;font-weight:700;">TEMPLATE ②</div>
+        <div class="slide-title" style="font-size:24px;color:#1f4d3b;margin-top:10px;line-height:1.5;">
+          <span style="background:#fff7c2;padding:0 6px;">〇〇</span>を大切にする
+        </div>
+        <div class="slide-body" style="font-size:13px;opacity:.55;margin-top:auto;padding-top:10px;">例：あいさつを大切にする</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px;display:flex;flex-direction:column;border-bottom:6px solid #f3c64a;">
+        <div class="slide-body" style="font-size:13px;letter-spacing:.1em;color:#a8821a;font-weight:700;">TEMPLATE ③</div>
+        <div class="slide-title" style="font-size:24px;color:#1f4d3b;margin-top:10px;line-height:1.5;">
+          <span style="background:#fff7c2;padding:0 6px;">〇〇</span>を守る
+        </div>
+        <div class="slide-body" style="font-size:13px;opacity:.55;margin-top:auto;padding-top:10px;">例：お祭りを守る</div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:16px;text-align:center;margin-top:18px;color:#3a6d4f;font-weight:700;">型はあくまでヒント。自由でいいよ 🌱</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 19 例文 -->
+<section data-label="19 例文" data-screen-label="19 例文" data-speaker-notes="他の子の例を見せて、「こんな感じでいいんだ」を感じてもらう。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:42px 56px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:#3a6d4f;color:#fbf6e4;align-self:flex-start;">EXAMPLES ✨</span>
+    <h2 class="slide-title" style="font-size:32px;margin:14px 0 4px 0;">たとえば、こんな憲章。</h2>
+    <div class="slide-body" style="font-size:15px;opacity:.6;">これを参考に、自分の言葉で書いてみよう！</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;flex:1;">
+      <div style="background:#fff;border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 12px rgba(31,77,59,.06);">
+        <div style="font-size:34px;">🛝</div>
+        <div class="slide-title" style="font-size:21px;color:#1f4d3b;line-height:1.4;">公園で遊べる街にする</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 12px rgba(31,77,59,.06);">
+        <div style="font-size:34px;">👋</div>
+        <div class="slide-title" style="font-size:21px;color:#1f4d3b;line-height:1.4;">近所の人とあいさつができる街を大切にする</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 12px rgba(31,77,59,.06);">
+        <div style="font-size:34px;">🎆</div>
+        <div class="slide-title" style="font-size:21px;color:#1f4d3b;line-height:1.4;">お祭りを守る</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 12px rgba(31,77,59,.06);">
+        <div style="font-size:34px;">🚶</div>
+        <div class="slide-title" style="font-size:21px;color:#1f4d3b;line-height:1.4;">みんなが安心して歩ける道を守る</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 20 考える時間（呼吸＋タイマー） -->
+<section data-label="20 考える時間" data-screen-label="20 考える時間" data-speaker-notes="静かに3分。タイマーは画面下のスタートをクリック or キーボード「T」で開始。BGMを流してもOK。" style="background:radial-gradient(120% 100% at 50% 60%, #1f4d3b 0%, #142e25 60%, #08160f 100%);color:#fbf6e4;overflow:hidden;">
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 60px;">
+    <div class="slide-body" style="font-size:15px;letter-spacing:.2em;opacity:.55;font-weight:700;">QUIET TIME · 3 MIN</div>
+    <h2 class="slide-title" style="font-size:36px;margin:8px 0 24px 0;">💭 考えてみよう</h2>
+    <!-- breathing visual -->
+    <div style="position:relative;width:240px;height:240px;display:flex;align-items:center;justify-content:center;">
+      <div class="breathe-ring2" style="position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle, rgba(243,198,74,.10), transparent 70%);"></div>
+      <div class="breathe-ring" style="position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(207,228,205,.18), transparent 70%);"></div>
+      <div class="breathe-core" style="width:140px;height:140px;border-radius:50%;background:radial-gradient(circle at 35% 30%, #cfe4cd 0%, #6fa977 60%, #3a6d4f 100%);box-shadow:0 0 60px rgba(207,228,205,.35);display:flex;align-items:center;justify-content:center;">
+        <span class="slide-title" style="color:#1f4d3b;font-size:22px;">すーっ</span>
+      </div>
+    </div>
+    <div id="s20-timer-wrap" style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:18px;">
+      <div id="s20-timer" class="slide-title" style="font-size:42px;color:#f3c64a;font-variant-numeric:tabular-nums;letter-spacing:.04em;">03:00</div>
+      <button id="s20-start" type="button" style="background:#f3c64a;color:#3d2c0c;border:0;border-radius:999px;padding:8px 22px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.25);">▶ スタート（クリック / キー T）</button>
+    </div>
+  </div>
+  <script>
+  (function(){
+    function bind(){
+      const root = document.querySelector('section[data-label="20 考える時間"]');
+      if(!root) return;
+      const display = root.querySelector('#s20-timer');
+      const btn = root.querySelector('#s20-start');
+      if(!display || !btn || btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+      let endAt = null, raf = null, running = false;
+      function fmt(ms){
+        if(ms < 0) ms = 0;
+        const s = Math.ceil(ms/1000);
+        const m = Math.floor(s/60), r = s%60;
+        return String(m).padStart(2,'0') + ':' + String(r).padStart(2,'0');
+      }
+      function tick(){
+        const left = endAt - Date.now();
+        display.textContent = fmt(left);
+        if(left <= 0){
+          running = false;
+          display.style.color = '#cfe4cd';
+          btn.textContent = '⏹ 終了！ もう一度？';
+          return;
+        }
+        raf = requestAnimationFrame(tick);
+      }
+      function start(){
+        if(running){ running=false; cancelAnimationFrame(raf); display.textContent='03:00'; btn.textContent='▶ スタート（クリック / キー T）'; display.style.color='#f3c64a'; return; }
+        running = true;
+        endAt = Date.now() + 180*1000;
+        btn.textContent = '⏸ ストップ / リセット';
+        display.style.color = '#f3c64a';
+        tick();
+      }
+      btn.addEventListener('click', start);
+      window.addEventListener('keydown', (e)=>{
+        if(e.key && e.key.toLowerCase()==='t' && document.querySelector('section[data-label="20 考える時間"]').offsetParent !== null) start();
+      });
+    }
+    if(document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(bind, 200);
+    else document.addEventListener('DOMContentLoaded', bind);
+  })();
+  </script>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 21 書けたらチャットへ -->
+<section data-label="21 チャットへ" data-screen-label="21 チャットへ" data-speaker-notes="チャットへの呼び水。投稿例を見せて、形を真似ていいよと伝える。" style="background:linear-gradient(150deg,#fce98c 0%,#f3c64a 100%);color:#3d2c0c;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.22);"></div>
+  <div aria-hidden="true" style="position:absolute;left:24px;top:24px;font-size:24px;opacity:.55;animation:drift 5s ease-in-out infinite;">✨</div>
+  <div aria-hidden="true" style="position:absolute;right:24px;top:24px;font-size:22px;opacity:.55;animation:drift 6s ease-in-out infinite reverse;">🌟</div>
+  <div style="position:absolute;inset:0;padding:46px 60px;display:flex;flex-direction:column;">
+    <div class="slide-body" style="font-size:16px;letter-spacing:.15em;font-weight:700;opacity:.65;">↘ TYPE IT IN CHAT</div>
+    <h1 class="slide-title" style="font-size:54px;margin:10px 0 4px 0;line-height:1.15;">書けた人は、<br>チャットへ！💬</h1>
+    <!-- chat bubble -->
+    <div style="margin-top:auto;display:flex;align-items:flex-end;gap:14px;">
+      <div style="width:48px;height:48px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">🧒</div>
+      <div style="background:#fff;border-radius:18px 18px 18px 4px;padding:14px 20px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+        <div class="slide-body" style="font-size:11px;font-weight:700;opacity:.55;letter-spacing:.05em;">例：参加者さん</div>
+        <div class="slide-title" style="font-size:26px;color:#1f4d3b;margin-top:4px;">公園を大切にする街！</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:14px;justify-content:flex-end;">
+      <span class="tag" style="background:#fff;color:#3a6d4f;">ひとつでOK</span>
+      <span class="tag" style="background:#fff;color:#c05a2a;">短くてOK</span>
+      <span class="tag" style="background:#fff;color:#a8821a;">うまくなくてOK</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 22 みんなの憲章 発表 -->
+<section data-label="22 みんなの憲章 発表" data-screen-label="22 みんなの憲章 発表" data-speaker-notes="参加者の憲章を投影する場所。ファシリが書き出して読みあげる。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;left:18px;top:18px;font-size:22px;opacity:.55;">👏</div>
+  <div aria-hidden="true" style="position:absolute;right:18px;bottom:14px;font-size:24px;opacity:.5;">🌟</div>
+  <div aria-hidden="true" style="position:absolute;left:14px;bottom:14px;font-size:20px;opacity:.5;">💚</div>
+  <div style="position:absolute;inset:0;padding:36px 56px;display:flex;flex-direction:column;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="tag" style="background:#ef8550;color:#fff;font-size:18px;">🎤 みんなの憲章 発表タイム</span>
+      <span class="slide-body" style="font-size:14px;opacity:.55;">ファシリが書き出してね</span>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:24px;margin-top:14px;flex:1;border:2px dashed #cfe4cd;box-shadow:0 6px 18px rgba(31,77,59,.06);display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:flex-start;gap:14px;padding-bottom:10px;border-bottom:1px dashed #e0d8b8;">
+        <div style="font-size:24px;color:#ef8550;font-family:'Kaisei Decol',serif;font-weight:700;min-width:42px;">①</div>
+        <div class="slide-body" style="font-size:18px;color:#2a2620;opacity:.4;">　　　　　　　　　　　　　さん　　　　　　　　　　　　　　　　　　　　　　　　　</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:14px;padding-bottom:10px;border-bottom:1px dashed #e0d8b8;">
+        <div style="font-size:24px;color:#ef8550;font-family:'Kaisei Decol',serif;font-weight:700;min-width:42px;">②</div>
+        <div class="slide-body" style="font-size:18px;color:#2a2620;opacity:.4;">　　　　　　　　　　　　　さん　　　　　　　　　　　　　　　　　　　　　　　　　</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:14px;padding-bottom:10px;border-bottom:1px dashed #e0d8b8;">
+        <div style="font-size:24px;color:#ef8550;font-family:'Kaisei Decol',serif;font-weight:700;min-width:42px;">③</div>
+        <div class="slide-body" style="font-size:18px;color:#2a2620;opacity:.4;">　　　　　　　　　　　　　さん　　　　　　　　　　　　　　　　　　　　　　　　　</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="font-size:24px;color:#ef8550;font-family:'Kaisei Decol',serif;font-weight:700;min-width:42px;">④</div>
+        <div class="slide-body" style="font-size:18px;color:#2a2620;opacity:.4;">　　　　　　　　　　　　　さん　　　　　　　　　　　　　　　　　　　　　　　　　</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 23 並べてみよう -->
+<section data-label="23 並べてみよう" data-screen-label="23 並べてみよう" data-speaker-notes="屋久島と自分たちの街、似てるところある？を投げかけ。共通点を発見させる。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:40px 50px;display:flex;flex-direction:column;">
+    <h2 class="slide-title" style="font-size:28px;margin:0;text-align:center;">屋久島憲章と、みんなの憲章を <span style="color:#ef8550;">並べてみよう</span></h2>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:18px;margin-top:18px;flex:1;align-items:stretch;">
+      <!-- left: Yakushima -->
+      <div style="background:#1f4d3b;color:#fbf6e4;border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;">
+        <div class="slide-body" style="font-size:13px;font-weight:700;color:#f3c64a;letter-spacing:.1em;">YAKUSHIMA</div>
+        <div class="slide-title" style="font-size:18px;margin:4px 0 12px 0;">屋久島憲章</div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1;justify-content:center;">
+          <div class="slide-body" style="font-size:14px;display:flex;gap:6px;"><span style="color:#f3c64a;">①</span>水の環境を守る</div>
+          <div class="slide-body" style="font-size:14px;display:flex;gap:6px;"><span style="color:#f3c64a;">②</span>子どもが夢を持てる地域に</div>
+          <div class="slide-body" style="font-size:14px;display:flex;gap:6px;"><span style="color:#f3c64a;">③</span>歴史や伝統を大切に</div>
+          <div class="slide-body" style="font-size:14px;display:flex;gap:6px;"><span style="color:#f3c64a;">④</span>世界の人と交流する</div>
+        </div>
+      </div>
+      <!-- center: AND badge -->
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <div style="width:64px;height:64px;border-radius:50%;background:#f3c64a;color:#3d2c0c;display:flex;align-items:center;justify-content:center;font-family:'Kaisei Decol',serif;font-weight:700;font-size:24px;box-shadow:0 4px 12px rgba(243,198,74,.5);transform:rotate(-6deg);">
+          &amp;
+        </div>
+        <div class="slide-body" style="font-size:11px;color:#3a6d4f;font-weight:700;margin-top:8px;letter-spacing:.1em;">CROSS</div>
+      </div>
+      <!-- right: Ours -->
+      <div style="background:#a8d4e8;color:#163a4d;border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;">
+        <div class="slide-body" style="font-size:13px;font-weight:700;color:#1f4d3b;letter-spacing:.1em;">OUR TOWN</div>
+        <div class="slide-title" style="font-size:18px;margin:4px 0 12px 0;">みんなの憲章</div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1;justify-content:center;">
+          <div class="slide-body" style="font-size:14px;display:flex;gap:6px;"><span style="color:#1f4d3b;">①</span>公園で遊べる街にする</div>
+          <div class="slide-body" style="font-size:14px;display:flex;gap:6px;"><span style="color:#1f4d3b;">②</span>あいさつができる街を大切に</div>
+          <div class="slide-body" style="font-size:14px;display:flex;gap:6px;"><span style="color:#1f4d3b;">③</span>お祭りを守る</div>
+          <div class="slide-body" style="font-size:14px;display:flex;gap:6px;"><span style="color:#1f4d3b;">④</span>安心して歩ける道を守る</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;gap:18px;">
+      <div class="slide-body" style="font-size:18px;font-weight:700;color:#ef8550;">▶ 似ているところ、ある？</div>
+      <div class="slide-body" style="font-size:14px;color:#3a6d4f;font-weight:700;text-align:right;">大切にしたい気持ちは、<br>屋久島も、みんなの街も、同じ 🌿</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 24 1993年から -->
+<section data-label="24 1993年から" data-screen-label="24 1993年から" data-speaker-notes="重みのある時間軸。屋久島は30年以上ずっと守ってきた。みなさんは？" style="background:linear-gradient(140deg,#1f4d3b 0%,#3a6d4f 55%,#a8821a 100%);color:#fbf6e4;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;left:-60px;top:-60px;width:260px;height:260px;background:radial-gradient(circle, rgba(243,198,74,.18), transparent 65%);"></div>
+  <div style="position:absolute;inset:0;padding:42px 56px;display:flex;flex-direction:column;">
+    <div class="slide-body" style="font-size:14px;letter-spacing:.18em;opacity:.65;font-weight:700;">SINCE 1993 ／ FOR 30+ YEARS</div>
+    <h1 class="slide-title" style="font-size:72px;margin:8px 0 4px 0;line-height:1.05;">1993年から、<br><span style="color:#f3c64a;">ずっと。</span></h1>
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:22px;margin-top:18px;flex:1;align-items:stretch;">
+      <div class="slot" style="background:rgba(0,0,0,.18);border-color:rgba(251,246,228,.25);color:rgba(251,246,228,.6);">
+        <div style="font-size:40px;opacity:.7;">🌲</div>
+        <div style="font-size:14px;margin-top:4px;">屋久島の自然・人の暮らし</div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="slide-body" style="font-size:16px;line-height:1.7;opacity:.85;">屋久島の人は、<br>この約束を <span style="color:#f3c64a;font-weight:700;">30年以上</span> ずっと、<br>守り続けてきた。</div>
+        <div class="slide-title" style="font-size:32px;margin-top:22px;color:#f3c64a;">みなさんは、<br>どうする？</div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:15px;text-align:center;margin-top:14px;opacity:.8;background:rgba(0,0,0,.18);padding:10px 16px;border-radius:999px;">今日つくった憲章を、明日からひとつでも意識してみよう ✨</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 25 100年続くわたしの街 -->
+<section data-label="25 100年続くわたしの街" data-screen-label="25 100年続くわたしの街" data-speaker-notes="100年後も続く街、というスケールで考えてみよう。今日からひとつ、小さなことを意識する。" style="background:linear-gradient(160deg,#a8d4e8 0%,#cfe4cd 55%,#6fa977 100%);color:#1f4d3b;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.25);"></div>
+  <div aria-hidden="true" style="position:absolute;left:-30px;bottom:-40px;width:180px;height:180px;border-radius:50%;background:rgba(31,77,59,.08);"></div>
+  <div style="position:absolute;inset:0;padding:38px 50px;display:flex;flex-direction:column;">
+    <div class="slide-body" style="font-size:14px;letter-spacing:.2em;opacity:.7;font-weight:700;">FOR THE NEXT 100 YEARS 🌳</div>
+    <h2 class="slide-title" style="font-size:40px;margin:6px 0 4px 0;line-height:1.2;">自分の街の「大切」を、<br><span style="color:#1f4d3b;background:linear-gradient(transparent 65%, rgba(243,198,74,.7) 65%);">大切にしていこう。</span></h2>
+    <div class="slide-body" style="font-size:16px;opacity:.75;margin-top:2px;">100年続く、わたしの街へ。</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px;flex:1;">
+      <div style="background:#fff;border-radius:14px;padding:14px;display:flex;flex-direction:column;border-top:5px solid #6fa977;">
+        <div class="slide-body" style="font-size:12px;color:#3a6d4f;font-weight:700;letter-spacing:.1em;">TODAY ／ 今日</div>
+        <div style="font-size:28px;margin:6px 0;">🌱</div>
+        <div class="slide-title" style="font-size:18px;color:#1f4d3b;line-height:1.4;">憲章を、目に<br>つく場所に貼る</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:14px;display:flex;flex-direction:column;border-top:5px solid #ef8550;">
+        <div class="slide-body" style="font-size:12px;color:#c05a2a;font-weight:700;letter-spacing:.1em;">TOMORROW ／ 明日</div>
+        <div style="font-size:28px;margin:6px 0;">👀</div>
+        <div class="slide-title" style="font-size:18px;color:#1f4d3b;line-height:1.4;">「大切」を、<br>もう一度見つめる</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:14px;display:flex;flex-direction:column;border-top:5px solid #f3c64a;">
+        <div class="slide-body" style="font-size:12px;color:#a8821a;font-weight:700;letter-spacing:.1em;">SOMEDAY ／ いつか</div>
+        <div style="font-size:28px;margin:6px 0;">🤝</div>
+        <div class="slide-title" style="font-size:18px;color:#1f4d3b;line-height:1.4;">街の誰かと、<br>この話をする</div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:18px;font-weight:700;margin-top:16px;text-align:center;color:#1f4d3b;">100年後の<span style="color:#ef8550;">誰か</span>に、今日の<span class="hand-u">バトンを。</span></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 26 ありがとう -->
+<section data-label="26 ありがとう" data-screen-label="26 ありがとう" data-speaker-notes="2回シリーズの締めくくり。修了感を出す。手紙の比喩で持ち帰り感を演出。" style="background:linear-gradient(180deg,#1f4d3b 0%,#3a6d4f 35%,#ef8550 80%,#f3c64a 100%);color:#fbf6e4;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
+    <div style="position:absolute;top:18%;left:10%;width:3px;height:3px;background:#fff;border-radius:50%;animation:shimmer 3s ease-in-out infinite;"></div>
+    <div style="position:absolute;top:8%;left:60%;width:4px;height:4px;background:#fff;border-radius:50%;animation:shimmer 2.4s ease-in-out infinite;animation-delay:.6s;"></div>
+    <div style="position:absolute;top:24%;left:82%;width:2px;height:2px;background:#fff;border-radius:50%;animation:shimmer 3.6s ease-in-out infinite;animation-delay:.3s;"></div>
+    <div style="position:absolute;top:36%;left:36%;width:3px;height:3px;background:#fff;border-radius:50%;animation:shimmer 2.8s ease-in-out infinite;animation-delay:1.1s;"></div>
+  </div>
+  <div style="position:absolute;inset:0;padding:46px 60px;display:flex;flex-direction:column;justify-content:space-between;">
+    <div>
+      <div class="slide-body" style="font-size:14px;letter-spacing:.2em;opacity:.7;font-weight:700;">FIN ／ 全 2 回 完走</div>
+      <h1 class="slide-title" style="font-size:78px;margin:12px 0 0 0;line-height:1.05;">ありがとう！<span style="font-size:60px;">🌟</span></h1>
+      <div class="slide-title" style="font-size:32px;margin-top:8px;color:#f3c64a;">2回完走、おめでとう！</div>
+    </div>
+    <div style="background:rgba(251,246,228,.92);color:#1f4d3b;border-radius:18px;padding:18px 22px;align-self:flex-start;max-width:520px;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-1.2deg);">
+      <div class="slide-body" style="font-size:11px;letter-spacing:.15em;color:#3a6d4f;font-weight:700;">A LETTER TO YOUR TOWN ✉️</div>
+      <div class="slide-title" style="font-size:22px;margin-top:6px;line-height:1.45;">今日つくった憲章は、<br><span style="color:#ef8550;">自分の街への手紙</span>。<br>大切にもって帰ってね。</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px;">
+      <div style="display:flex;gap:8px;">
+        <span class="tag" style="background:rgba(251,246,228,.18);color:#fbf6e4;border:1.5px solid rgba(251,246,228,.4);font-size:13px;">第1回 ✓</span>
+        <span class="tag" style="background:rgba(251,246,228,.18);color:#fbf6e4;border:1.5px solid rgba(251,246,228,.4);font-size:13px;">第2回 ✓</span>
+      </div>
+      <div class="slide-body" style="font-size:16px;text-align:right;opacity:.85;font-weight:700;">またどこかで、<br>屋久島の話をしようね 🌲</div>
+    </div>
+  </div>
+</section>
+
+</x-import>
+
+</x-dc>
+</body>
+</html>
