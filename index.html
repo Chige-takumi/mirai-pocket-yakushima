@@ -37,10 +37,10 @@
   @keyframes shimmer { 0%{opacity:.5} 50%{opacity:1} 100%{opacity:.5} }
   .wc-word{animation:wordFloat .9s both;display:inline-block;font-family:'Kaisei Decol',serif;}
   .pop{animation:pop .5s both;}
-  /* breathe scoped to slide 20 */
-  section[data-label="20 考える時間"] .breathe-core{animation:breathe 8s ease-in-out infinite;}
-  section[data-label="20 考える時間"] .breathe-ring{animation:breatheRing 8s ease-in-out infinite;}
-  section[data-label="20 考える時間"] .breathe-ring2{animation:breatheRing 8s ease-in-out infinite;animation-delay:-2s;}
+  /* breathe scoped to slide 24 */
+  section[data-label="24 考える時間"] .breathe-core{animation:breathe 8s ease-in-out infinite;}
+  section[data-label="24 考える時間"] .breathe-ring{animation:breatheRing 8s ease-in-out infinite;}
+  section[data-label="24 考える時間"] .breathe-ring2{animation:breatheRing 8s ease-in-out infinite;animation-delay:-2s;}
   .leaf-deco{position:absolute;animation:sway 6s ease-in-out infinite;transform-origin:bottom center;}
   /* hand-drawn underline */
   .hand-u{position:relative;display:inline-block;}
@@ -51,6 +51,8 @@
   .visual-slot img{width:100%;height:100%;display:block;object-fit:cover;}
   .image-badge{position:absolute;left:10px;top:10px;background:rgba(251,246,228,.92);color:#1f4d3b;border-radius:999px;padding:4px 10px;font-family:'M PLUS Rounded 1c',sans-serif;font-size:11px;font-weight:800;letter-spacing:.04em;box-shadow:0 3px 10px rgba(0,0,0,.16);}
   .image-caption{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(31,77,59,.82);color:#fbf6e4;border-radius:10px;padding:7px 10px;font-family:'M PLUS Rounded 1c',sans-serif;font-size:12px;font-weight:800;text-align:center;line-height:1.35;}
+  .recap-photo{width:100%;height:100%;display:block;object-fit:cover;}
+  .recap-panel{overflow:hidden;border-radius:8px;background:#fff;box-shadow:0 8px 22px rgba(31,77,59,.12);}
 </style>
 </head>
 <body>
@@ -83,8 +85,30 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 02 おかえり -->
-<section data-label="02 おかえり" data-screen-label="02 おかえり" data-speaker-notes="再会のあいさつ。雑談ベース。チャットを温めるための1枚。" style="background:linear-gradient(135deg,#f3c64a 0%,#ef8550 100%);color:#3d2c0c;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 02 自己紹介 -->
+<section data-label="02 自己紹介" data-screen-label="02 自己紹介" data-speaker-notes="第1回と同じ自己紹介を短く。『ちげって呼んでね』と再確認して、安心して話せる空気をつくる。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;display:grid;grid-template-columns:380px 1fr;">
+    <div style="position:relative;overflow:hidden;background:#1f4d3b;">
+      <img class="recap-photo" src="assets/recap/profile-chige.jpg" alt="渡邉匠さんのプロフィール写真" style="object-position:68% center;">
+      <div style="position:absolute;inset:auto 0 0;padding:54px 34px 30px;background:linear-gradient(transparent,rgba(13,42,31,.92));color:#fbf6e4;">
+        <div class="slide-title" style="font-size:31px;">渡邉 匠 <span style="font-size:20px;opacity:.85;">（ちげ）</span></div>
+        <div class="slide-body" style="font-size:15px;margin-top:6px;opacity:.9;">「ちげ」って呼んでね！</div>
+      </div>
+    </div>
+    <div style="padding:46px 52px;display:flex;flex-direction:column;justify-content:center;">
+      <span class="tag" style="background:#1f4d3b;color:#fbf6e4;align-self:flex-start;">もう一度、自己紹介</span>
+      <h2 class="slide-title" style="font-size:39px;margin:17px 0 24px;">今日も屋久島から<br>お話しします。</h2>
+      <div style="display:grid;gap:15px;">
+        <div class="slide-body" style="font-size:18px;display:flex;gap:13px;align-items:center;"><span style="font-size:28px;">🏫</span><span>元高校教師（英語・情報）10年</span></div>
+        <div class="slide-body" style="font-size:18px;display:flex;gap:13px;align-items:center;"><span style="font-size:28px;">🏔️</span><span>カナダ・ロッキー山脈でガイド</span></div>
+        <div class="slide-body" style="font-size:18px;display:flex;gap:13px;align-items:center;"><span style="font-size:28px;">🌲</span><span>屋久島で教育旅行・探究旅行をつくる</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 03 おかえり -->
+<section data-label="03 おかえり" data-screen-label="03 おかえり" data-speaker-notes="再会のあいさつ。雑談ベース。チャットを温めるための1枚。" style="background:linear-gradient(135deg,#f3c64a 0%,#ef8550 100%);color:#3d2c0c;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
     <div style="position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.18);"></div>
     <div style="position:absolute;left:-40px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.14);"></div>
@@ -102,8 +126,89 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 03 おさらいクイズ -->
-<section data-label="03 おさらいクイズ" data-screen-label="03 おさらいクイズ" data-speaker-notes="深追いせず、雰囲気作りのクイズ。答えは即出してOK。3問テンポよく。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 04 前回何したっけ -->
+<section data-label="04 前回何したっけ" data-screen-label="04 前回何したっけ" data-speaker-notes="すぐ答えを言わず、30秒ほど思い出す時間。覚えている言葉を声かチャットで出してもらう。" style="background:#163a2c;color:#fbf6e4;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;opacity:.3;">
+    <img class="recap-photo" src="assets/recap/river-kids.jpg" alt="">
+    <img class="recap-photo" src="assets/recap/forest-kids-real.jpg" alt="">
+  </div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,58,44,.92),rgba(22,58,44,.72),rgba(22,58,44,.9));"></div>
+  <div style="position:absolute;inset:0;padding:54px 64px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+    <span class="tag" style="background:#f3c64a;color:#3d2c0c;">思い出しタイム</span>
+    <div class="slide-body" style="font-size:19px;margin-top:28px;opacity:.85;">1週間前のこと、目を閉じて思い出してみよう。</div>
+    <h1 class="slide-title" style="font-size:66px;margin:13px 0 22px;">前回、何したっけ？</h1>
+    <div class="slide-body" style="font-size:22px;background:rgba(251,246,228,.14);border:1.5px solid rgba(251,246,228,.35);padding:12px 24px;border-radius:8px;">覚えている言葉を、ひとつ教えて！</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 05 前回の旅 -->
+<section data-label="05 前回の旅" data-screen-label="05 前回の旅" data-speaker-notes="子どもから出た言葉を拾いながら、前回の3つの流れを短く整理する。最後に宿題へつなぐ。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:38px 52px;display:flex;flex-direction:column;">
+    <span class="tag" style="background:#1f4d3b;color:#fbf6e4;align-self:flex-start;">前回の旅を、30秒で！</span>
+    <h2 class="slide-title" style="font-size:34px;margin:12px 0 20px;">こんなことを一緒に見つけたね。</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;flex:1;min-height:0;">
+      <div class="recap-panel" style="display:flex;flex-direction:column;">
+        <div style="height:142px;overflow:hidden;"><img class="recap-photo" src="assets/recap/river-kids.jpg" alt="屋久島の水辺で過ごす子どもたち" style="object-position:center 72%;"></div>
+        <div style="padding:14px 16px;">
+          <div class="slide-title" style="font-size:21px;color:#1f4d3b;">① 島の放課後</div>
+          <div class="slide-body" style="font-size:14px;margin-top:5px;">川や森が、遊び場になる。</div>
+        </div>
+      </div>
+      <div class="recap-panel" style="display:flex;flex-direction:column;">
+        <div style="height:142px;overflow:hidden;"><img class="recap-photo" src="assets/recap/forest-kids-real.jpg" alt="屋久島の森で遊ぶ子どもたち" style="object-position:center 56%;"></div>
+        <div style="padding:14px 16px;">
+          <div class="slide-title" style="font-size:21px;color:#1f4d3b;">② 自然と暮らし</div>
+          <div class="slide-body" style="font-size:14px;margin-top:5px;">雨・山・森・水がつながる。</div>
+        </div>
+      </div>
+      <div class="recap-panel" style="display:flex;flex-direction:column;background:#1f4d3b;color:#fbf6e4;">
+        <div style="height:142px;display:grid;place-items:center;background:#cfe4cd;color:#1f4d3b;font-size:70px;">📜</div>
+        <div style="padding:14px 16px;">
+          <div class="slide-title" style="font-size:21px;color:#f3c64a;">③ 屋久島憲章</div>
+          <div class="slide-body" style="font-size:14px;margin-top:5px;">大切なものを守る「約束」。</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-body" style="font-size:16px;font-weight:700;text-align:center;margin-top:14px;color:#c05a2a;">そして宿題は、自分の街の「大切」を探すこと。</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 06 屋久島の基礎知識 -->
+<section data-label="06 屋久島の基礎知識" data-screen-label="06 屋久島の基礎知識" data-speaker-notes="位置を地図で再確認し、雨・山・水力発電を一本のつながりとして復習。細かな数字はクイズへ残す。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+  <div style="position:absolute;inset:0;padding:36px 48px;display:flex;flex-direction:column;">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;">
+      <div>
+        <span class="tag" style="background:#a8d4e8;color:#163a4d;">屋久島の基礎知識</span>
+        <h2 class="slide-title" style="font-size:33px;margin:10px 0 0;">まず、この4つを思い出そう。</h2>
+      </div>
+      <div class="slide-body" style="font-size:14px;color:#3a6d4f;font-weight:700;text-align:right;">場所 → 雨 → 山 → 水の力<br>ぜんぶ、つながっている！</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.08fr .92fr;gap:18px;margin-top:17px;flex:1;min-height:0;">
+      <div class="recap-panel" style="position:relative;background:#fff;">
+        <img src="assets/recap/japan-map-yakushima-answer.png" alt="日本の中の屋久島の位置を示す地図" style="width:100%;height:100%;object-fit:contain;">
+        <div style="position:absolute;left:12px;top:12px;background:#1f4d3b;color:#fff;border-radius:6px;padding:7px 11px;font-family:'M PLUS Rounded 1c',sans-serif;font-size:14px;font-weight:800;">① 鹿児島県の南</div>
+      </div>
+      <div style="display:grid;grid-template-rows:repeat(3,1fr);gap:10px;min-height:0;">
+        <div style="display:grid;grid-template-columns:112px 1fr;background:#fff;border-radius:8px;overflow:hidden;">
+          <img class="recap-photo" src="assets/recap/rain-forest.png" alt="雨に包まれた屋久島の森">
+          <div style="padding:10px 13px;display:flex;flex-direction:column;justify-content:center;"><div class="slide-title" style="font-size:20px;color:#2f6a85;">② 雨が多い</div><div class="slide-body" style="font-size:13px;">「月に35日雨」と言われるほど。</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:112px 1fr;background:#fff;border-radius:8px;overflow:hidden;">
+          <img src="assets/recap/elevation-cross-section.png" alt="海から宮之浦岳までの標高図" style="width:100%;height:100%;object-fit:cover;object-position:80% center;">
+          <div style="padding:10px 13px;display:flex;flex-direction:column;justify-content:center;"><div class="slide-title" style="font-size:20px;color:#c05a2a;">③ 山が高い</div><div class="slide-body" style="font-size:13px;">最高峰・宮之浦岳は1936m。</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:112px 1fr;background:#fff;border-radius:8px;overflow:hidden;position:relative;">
+          <img src="assets/recap/hydro-electricity.png" alt="水力発電のイメージ" style="width:100%;height:100%;object-fit:cover;">
+          <div style="padding:10px 13px;display:flex;flex-direction:column;justify-content:center;"><div class="slide-title" style="font-size:20px;color:#3a6d4f;">④ 水で電気</div><div class="slide-body" style="font-size:13px;">島の電気のほとんどが水力発電。</div></div>
+          <span style="position:absolute;left:6px;bottom:5px;background:rgba(251,246,228,.9);color:#1f4d3b;border-radius:4px;padding:2px 5px;font-family:'M PLUS Rounded 1c',sans-serif;font-size:9px;font-weight:800;">イメージ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════ SLIDE 07 おさらいクイズ -->
+<section data-label="07 おさらいクイズ" data-screen-label="07 おさらいクイズ" data-speaker-notes="基礎知識を見た直後なので、子どもに答えてもらいながらテンポよく確認する。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;right:-40px;bottom:-50px;width:240px;height:240px;background:radial-gradient(circle, rgba(243,198,74,.22), transparent 65%);"></div>
   <div style="position:absolute;inset:0;padding:44px 60px;display:flex;flex-direction:column;">
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
@@ -144,8 +249,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 04 今日の流れ -->
-<section data-label="04 今日の流れ" data-screen-label="04 今日の流れ" data-speaker-notes="50分の見通し。4ブロックでテンポよく説明。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 08 今日の流れ -->
+<section data-label="08 今日の流れ" data-screen-label="08 今日の流れ" data-speaker-notes="50分の見通し。4ブロックでテンポよく説明。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:44px 56px;display:flex;flex-direction:column;">
     <span class="tag" style="background:#1f4d3b;color:#fbf6e4;align-self:flex-start;">🗺 TODAY'S FLOW</span>
     <h2 class="slide-title" style="font-size:36px;margin:14px 0 22px 0;">今日の流れ <span style="font-size:22px;opacity:.55;">— 50 min</span></h2>
@@ -179,8 +284,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 05 宿題のおさらい -->
-<section data-label="05 宿題のおさらい" data-screen-label="05 宿題のおさらい" data-speaker-notes="宿題を覚えてない子も大丈夫。フォーマットを再確認して、発表へつなぐ。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 09 宿題のおさらい -->
+<section data-label="09 宿題のおさらい" data-screen-label="09 宿題のおさらい" data-speaker-notes="宿題を覚えてない子も大丈夫。フォーマットを再確認して、発表へつなぐ。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:44px 60px;display:flex;flex-direction:column;">
     <span class="tag" style="background:#3a6d4f;color:#fbf6e4;align-self:flex-start;">HOMEWORK ✏️</span>
     <h2 class="slide-title" style="font-size:34px;margin:14px 0 6px 0;">先週の宿題、覚えてる？</h2>
@@ -210,8 +315,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 06 発表のルール -->
-<section data-label="06 発表のルール" data-screen-label="06 発表のルール" data-speaker-notes="3つだけ伝えればOK。話し方の上手さは関係ないことを強調。" style="background:linear-gradient(160deg,#fce98c 0%,#f3c64a 100%);color:#3d2c0c;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 10 発表のルール -->
+<section data-label="10 発表のルール" data-screen-label="10 発表のルール" data-speaker-notes="3つだけ伝えればOK。話し方の上手さは関係ないことを強調。" style="background:linear-gradient(160deg,#fce98c 0%,#f3c64a 100%);color:#3d2c0c;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.25);"></div>
   <div style="position:absolute;inset:0;padding:44px 60px;display:flex;flex-direction:column;">
     <span class="tag" style="background:#1f4d3b;color:#fbf6e4;align-self:flex-start;">🎤 FOR THE SPEAKER</span>
@@ -241,8 +346,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 07 発表タイム① -->
-<section data-label="07 発表タイム①" data-screen-label="07 発表タイム①" data-speaker-notes="参加者の宿題を投影。ファシリが氏名・コメントをその場で追記する。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 11 発表タイム① -->
+<section data-label="11 発表タイム①" data-screen-label="11 発表タイム①" data-speaker-notes="参加者の宿題を投影。ファシリが氏名・コメントをその場で追記する。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:36px 56px;display:flex;flex-direction:column;">
     <div style="display:flex;justify-content:space-between;align-items:center;">
       <span class="tag" style="background:#ef8550;color:#fff;font-size:18px;">🎤 発表タイム</span>
@@ -268,8 +373,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 08 発表タイム② -->
-<section data-label="08 発表タイム②" data-screen-label="08 発表タイム②" data-speaker-notes="同テンプレートで2人目。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 12 発表タイム② -->
+<section data-label="12 発表タイム②" data-screen-label="12 発表タイム②" data-speaker-notes="同テンプレートで2人目。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:36px 56px;display:flex;flex-direction:column;">
     <div style="display:flex;justify-content:space-between;align-items:center;">
       <span class="tag" style="background:#ef8550;color:#fff;font-size:18px;">🎤 発表タイム</span>
@@ -295,8 +400,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 09 発表タイム③ -->
-<section data-label="09 発表タイム③" data-screen-label="09 発表タイム③" data-speaker-notes="同テンプレートで3人目。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 13 発表タイム③ -->
+<section data-label="13 発表タイム③" data-screen-label="13 発表タイム③" data-speaker-notes="同テンプレートで3人目。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:36px 56px;display:flex;flex-direction:column;">
     <div style="display:flex;justify-content:space-between;align-items:center;">
       <span class="tag" style="background:#ef8550;color:#fff;font-size:18px;">🎤 発表タイム</span>
@@ -322,8 +427,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 10 ワードクラウド -->
-<section data-label="10 みんなの大切" data-screen-label="10 みんなの大切" data-speaker-notes="少し間を置いて、語りかけるように。「ぜんぶ、誰かの大切」のフレーズはしっかり言う。" style="background:radial-gradient(120% 100% at 50% 60%, #1b2c4d 0%, #0e1a30 70%, #060c1c 100%);color:#fbf6e4;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 14 ワードクラウド -->
+<section data-label="14 みんなの大切" data-screen-label="14 みんなの大切" data-speaker-notes="少し間を置いて、語りかけるように。「ぜんぶ、誰かの大切」のフレーズはしっかり言う。" style="background:radial-gradient(120% 100% at 50% 60%, #1b2c4d 0%, #0e1a30 70%, #060c1c 100%);color:#fbf6e4;overflow:hidden;">
   <!-- twinkling stars -->
   <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
     <div style="position:absolute;top:8%;left:10%;width:3px;height:3px;background:#fff;border-radius:50%;animation:shimmer 3s ease-in-out infinite;"></div>
@@ -411,7 +516,7 @@
       });
     }
     function bind(){
-      const root = document.querySelector('section[data-label="10 みんなの大切"]');
+      const root = document.querySelector('section[data-label="14 みんなの大切"]');
       if(!root || root.dataset.s10Bound) return;
       if(!document.getElementById('s10-cloud')) return;
       root.dataset.s10Bound = '1';
@@ -437,7 +542,7 @@
       applyBtn.addEventListener('click', apply);
       cancelBtn.addEventListener('click', close);
       window.addEventListener('keydown', (e)=>{
-        const section = document.querySelector('section[data-label="10 みんなの大切"]');
+        const section = document.querySelector('section[data-label="14 みんなの大切"]');
         if(!section || section.offsetParent === null) return;
         if(e.key && e.key.toLowerCase() === 'e' && modal.style.display === 'none' && document.activeElement !== input){
           e.preventDefault(); open();
@@ -453,8 +558,8 @@
   </script>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 11 問い① -->
-<section data-label="11 問い①" data-screen-label="11 問い①" data-speaker-notes="想像をジャンプさせる問い。少し沈黙の時間を取って、子どもたちが想像してから話す。" style="background:linear-gradient(140deg,#f3c64a 0%,#ef8550 60%,#e36a4d 100%);color:#3d2c0c;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 15 問い① -->
+<section data-label="15 問い①" data-screen-label="15 問い①" data-speaker-notes="想像をジャンプさせる問い。少し沈黙の時間を取って、子どもたちが想像してから話す。" style="background:linear-gradient(140deg,#f3c64a 0%,#ef8550 60%,#e36a4d 100%);color:#3d2c0c;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;inset:0;">
     <div style="position:absolute;right:-50px;top:-50px;width:220px;height:220px;border-radius:50%;background:rgba(251,246,228,.18);"></div>
     <div style="position:absolute;left:-30px;bottom:-50px;width:180px;height:180px;border-radius:50%;background:rgba(0,0,0,.06);"></div>
@@ -467,8 +572,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 12 屋久島も同じ -->
-<section data-label="12 屋久島も同じ" data-screen-label="12 屋久島も同じ" data-speaker-notes="屋久島の人も、同じことを感じて約束をつくった、という流れに繋ぐ。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 16 屋久島も同じ -->
+<section data-label="16 屋久島も同じ" data-screen-label="16 屋久島も同じ" data-speaker-notes="屋久島の人も、同じことを感じて約束をつくった、という流れに繋ぐ。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;left:-50px;top:-50px;width:220px;height:220px;background:radial-gradient(circle, rgba(243,198,74,.15), transparent 65%);"></div>
   <div style="position:absolute;inset:0;padding:42px 60px;display:flex;flex-direction:column;">
     <span class="tag" style="background:rgba(251,246,228,.18);color:#fbf6e4;border:1.5px solid rgba(251,246,228,.3);align-self:flex-start;">🌲 YAKUSHIMA</span>
@@ -500,8 +605,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 13 問い② -->
-<section data-label="13 問い②" data-screen-label="13 問い②" data-speaker-notes="想像を時間軸で大きくジャンプさせる。100年。" style="background:linear-gradient(160deg,#cce8f3 0%,#a8d4e8 60%,#7fbcd6 100%);color:#163a4d;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 17 問い② -->
+<section data-label="17 問い②" data-screen-label="17 問い②" data-speaker-notes="想像を時間軸で大きくジャンプさせる。100年。" style="background:linear-gradient(160deg,#cce8f3 0%,#a8d4e8 60%,#7fbcd6 100%);color:#163a4d;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;inset:0;">
     <div style="position:absolute;right:24px;top:14px;font-size:46px;opacity:.35;animation:drift 8s ease-in-out infinite;">☁️</div>
     <div style="position:absolute;left:24px;bottom:30px;font-size:42px;opacity:.4;animation:drift 6s ease-in-out infinite reverse;">☁️</div>
@@ -518,8 +623,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 14 100年前と100年後 -->
-<section data-label="14 100年前と100年後" data-screen-label="14 100年前と100年後" data-speaker-notes="バトンをつなぐ感覚。100年前の人が守ってくれたから、今がある。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 18 100年前と100年後 -->
+<section data-label="18 100年前と100年後" data-screen-label="18 100年前と100年後" data-speaker-notes="バトンをつなぐ感覚。100年前の人が守ってくれたから、今がある。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:42px 56px;display:flex;flex-direction:column;">
     <div style="display:flex;justify-content:space-between;align-items:baseline;">
       <h2 class="slide-title" style="font-size:30px;margin:0;">100年前 ←→ 100年後</h2>
@@ -554,8 +659,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 15 約束のはじまり -->
-<section data-label="15 約束のはじまり" data-screen-label="15 約束のはじまり" data-speaker-notes="3段の階段で「守りたい気持ち」が「約束」になる流れを見せる。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 19 約束のはじまり -->
+<section data-label="19 約束のはじまり" data-screen-label="19 約束のはじまり" data-speaker-notes="3段の階段で「守りたい気持ち」が「約束」になる流れを見せる。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:46px 60px;display:flex;flex-direction:column;">
     <span class="tag" style="background:#3a6d4f;color:#fbf6e4;align-self:flex-start;">💚 THE BEGINNING</span>
     <h2 class="slide-title" style="font-size:34px;margin:14px 0 4px 0;">守りたい気持ち <span style="color:#ef8550;">＝</span> 約束のはじまり</h2>
@@ -583,8 +688,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 16 おさらい：屋久島憲章 -->
-<section data-label="16 屋久島憲章おさらい" data-screen-label="16 屋久島憲章おさらい" data-speaker-notes="第1回で習った屋久島憲章を、もう一度。これと同じ形でつくってみよう、と橋渡し。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 20 おさらい：屋久島憲章 -->
+<section data-label="20 屋久島憲章おさらい" data-screen-label="20 屋久島憲章おさらい" data-speaker-notes="第1回で習った屋久島憲章を、もう一度。これと同じ形でつくってみよう、と橋渡し。" style="background:#1f4d3b;color:#fbf6e4;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:42px 56px;display:flex;flex-direction:column;">
     <span class="tag" style="background:#f3c64a;color:#3d2c0c;align-self:flex-start;">📖 RECAP</span>
     <h2 class="slide-title" style="font-size:32px;margin:14px 0 4px 0;">おさらい：<span style="color:#f3c64a;">屋久島憲章</span></h2>
@@ -622,8 +727,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 17 約束をつくろう -->
-<section data-label="17 約束をつくろう" data-screen-label="17 約束をつくろう" data-speaker-notes="ワークの導入。3つの「OK」で安心感を作る。" style="background:linear-gradient(150deg,#f3c64a 0%,#ef8550 100%);color:#3d2c0c;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 21 約束をつくろう -->
+<section data-label="21 約束をつくろう" data-screen-label="21 約束をつくろう" data-speaker-notes="ワークの導入。3つの「OK」で安心感を作る。" style="background:linear-gradient(150deg,#f3c64a 0%,#ef8550 100%);color:#3d2c0c;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;right:-40px;bottom:-40px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.18);"></div>
   <div style="position:absolute;inset:0;padding:46px 60px;display:flex;flex-direction:column;">
     <div class="slide-body" style="font-size:16px;letter-spacing:.15em;font-weight:700;opacity:.7;">LET'S MAKE OURS</div>
@@ -646,8 +751,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 18 書き方テンプレ -->
-<section data-label="18 書き方テンプレ" data-screen-label="18 書き方テンプレ" data-speaker-notes="型はあくまでヒント。3つの型を見せて、書き始めのハードルを下げる。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 22 書き方テンプレ -->
+<section data-label="22 書き方テンプレ" data-screen-label="22 書き方テンプレ" data-speaker-notes="型はあくまでヒント。3つの型を見せて、書き始めのハードルを下げる。" style="background:#f6efd8;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:46px 60px;display:flex;flex-direction:column;">
     <span class="tag" style="background:#ef8550;color:#fff;align-self:flex-start;">📝 TEMPLATE</span>
     <h2 class="slide-title" style="font-size:34px;margin:14px 0 4px 0;">こんな書き方が、できるよ</h2>
@@ -679,8 +784,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 19 例文 -->
-<section data-label="19 例文" data-screen-label="19 例文" data-speaker-notes="他の子の例を見せて、「こんな感じでいいんだ」を感じてもらう。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 23 例文 -->
+<section data-label="23 例文" data-screen-label="23 例文" data-speaker-notes="他の子の例を見せて、「こんな感じでいいんだ」を感じてもらう。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:42px 56px;display:flex;flex-direction:column;">
     <span class="tag" style="background:#3a6d4f;color:#fbf6e4;align-self:flex-start;">EXAMPLES ✨</span>
     <h2 class="slide-title" style="font-size:32px;margin:14px 0 4px 0;">たとえば、こんな憲章。</h2>
@@ -706,8 +811,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 20 考える時間（呼吸＋タイマー） -->
-<section data-label="20 考える時間" data-screen-label="20 考える時間" data-speaker-notes="静かに3分。タイマーは画面下のスタートをクリック or キーボード「T」で開始。BGMを流してもOK。" style="background:radial-gradient(120% 100% at 50% 60%, #1f4d3b 0%, #142e25 60%, #08160f 100%);color:#fbf6e4;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 24 考える時間（呼吸＋タイマー） -->
+<section data-label="24 考える時間" data-screen-label="24 考える時間" data-speaker-notes="静かに3分。タイマーは画面下のスタートをクリック or キーボード「T」で開始。BGMを流してもOK。" style="background:radial-gradient(120% 100% at 50% 60%, #1f4d3b 0%, #142e25 60%, #08160f 100%);color:#fbf6e4;overflow:hidden;">
   <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 60px;">
     <div class="slide-body" style="font-size:15px;letter-spacing:.2em;opacity:.55;font-weight:700;">QUIET TIME · 3 MIN</div>
     <h2 class="slide-title" style="font-size:36px;margin:8px 0 24px 0;">💭 考えてみよう</h2>
@@ -727,7 +832,7 @@
   <script>
   (function(){
     function bind(){
-      const root = document.querySelector('section[data-label="20 考える時間"]');
+      const root = document.querySelector('section[data-label="24 考える時間"]');
       if(!root) return;
       const display = root.querySelector('#s20-timer');
       const btn = root.querySelector('#s20-start');
@@ -761,7 +866,7 @@
       }
       btn.addEventListener('click', start);
       window.addEventListener('keydown', (e)=>{
-        if(e.key && e.key.toLowerCase()==='t' && document.querySelector('section[data-label="20 考える時間"]').offsetParent !== null) start();
+        if(e.key && e.key.toLowerCase()==='t' && document.querySelector('section[data-label="24 考える時間"]').offsetParent !== null) start();
       });
     }
     if(document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(bind, 200);
@@ -770,8 +875,8 @@
   </script>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 21 書けたらチャットへ -->
-<section data-label="21 チャットへ" data-screen-label="21 チャットへ" data-speaker-notes="チャットへの呼び水。投稿例を見せて、形を真似ていいよと伝える。" style="background:linear-gradient(150deg,#fce98c 0%,#f3c64a 100%);color:#3d2c0c;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 25 書けたらチャットへ -->
+<section data-label="25 チャットへ" data-screen-label="25 チャットへ" data-speaker-notes="チャットへの呼び水。投稿例を見せて、形を真似ていいよと伝える。" style="background:linear-gradient(150deg,#fce98c 0%,#f3c64a 100%);color:#3d2c0c;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.22);"></div>
   <div aria-hidden="true" style="position:absolute;left:24px;top:24px;font-size:24px;opacity:.55;animation:drift 5s ease-in-out infinite;">✨</div>
   <div aria-hidden="true" style="position:absolute;right:24px;top:24px;font-size:22px;opacity:.55;animation:drift 6s ease-in-out infinite reverse;">🌟</div>
@@ -794,8 +899,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 22 みんなの憲章 発表 -->
-<section data-label="22 みんなの憲章 発表" data-screen-label="22 みんなの憲章 発表" data-speaker-notes="参加者の憲章を投影する場所。ファシリが書き出して読みあげる。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 26 みんなの憲章 発表 -->
+<section data-label="26 みんなの憲章 発表" data-screen-label="26 みんなの憲章 発表" data-speaker-notes="参加者の憲章を投影する場所。ファシリが書き出して読みあげる。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;left:18px;top:18px;font-size:22px;opacity:.55;">👏</div>
   <div aria-hidden="true" style="position:absolute;right:18px;bottom:14px;font-size:24px;opacity:.5;">🌟</div>
   <div aria-hidden="true" style="position:absolute;left:14px;bottom:14px;font-size:20px;opacity:.5;">💚</div>
@@ -825,8 +930,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 23 並べてみよう -->
-<section data-label="23 並べてみよう" data-screen-label="23 並べてみよう" data-speaker-notes="屋久島と自分たちの街、似てるところある？を投げかけ。共通点を発見させる。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 27 並べてみよう -->
+<section data-label="27 並べてみよう" data-screen-label="27 並べてみよう" data-speaker-notes="屋久島と自分たちの街、似てるところある？を投げかけ。共通点を発見させる。" style="background:#fbf6e4;color:#2a2620;overflow:hidden;">
   <div style="position:absolute;inset:0;padding:40px 50px;display:flex;flex-direction:column;">
     <h2 class="slide-title" style="font-size:28px;margin:0;text-align:center;">屋久島憲章と、みんなの憲章を <span style="color:#ef8550;">並べてみよう</span></h2>
     <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:18px;margin-top:18px;flex:1;align-items:stretch;">
@@ -867,8 +972,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 24 1993年から -->
-<section data-label="24 1993年から" data-screen-label="24 1993年から" data-speaker-notes="重みのある時間軸。屋久島は30年以上ずっと守ってきた。みなさんは？" style="background:linear-gradient(140deg,#1f4d3b 0%,#3a6d4f 55%,#a8821a 100%);color:#fbf6e4;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 28 1993年から -->
+<section data-label="28 1993年から" data-screen-label="28 1993年から" data-speaker-notes="重みのある時間軸。屋久島は30年以上ずっと守ってきた。みなさんは？" style="background:linear-gradient(140deg,#1f4d3b 0%,#3a6d4f 55%,#a8821a 100%);color:#fbf6e4;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;left:-60px;top:-60px;width:260px;height:260px;background:radial-gradient(circle, rgba(243,198,74,.18), transparent 65%);"></div>
   <div style="position:absolute;inset:0;padding:42px 56px;display:flex;flex-direction:column;">
     <div class="slide-body" style="font-size:14px;letter-spacing:.18em;opacity:.65;font-weight:700;">SINCE 1993 ／ FOR 30+ YEARS</div>
@@ -888,8 +993,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 25 100年続くわたしの街 -->
-<section data-label="25 100年続くわたしの街" data-screen-label="25 100年続くわたしの街" data-speaker-notes="100年後も続く街、というスケールで考えてみよう。今日からひとつ、小さなことを意識する。" style="background:linear-gradient(160deg,#a8d4e8 0%,#cfe4cd 55%,#6fa977 100%);color:#1f4d3b;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 29 100年続くわたしの街 -->
+<section data-label="29 100年続くわたしの街" data-screen-label="29 100年続くわたしの街" data-speaker-notes="100年後も続く街、というスケールで考えてみよう。今日からひとつ、小さなことを意識する。" style="background:linear-gradient(160deg,#a8d4e8 0%,#cfe4cd 55%,#6fa977 100%);color:#1f4d3b;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.25);"></div>
   <div aria-hidden="true" style="position:absolute;left:-30px;bottom:-40px;width:180px;height:180px;border-radius:50%;background:rgba(31,77,59,.08);"></div>
   <div style="position:absolute;inset:0;padding:38px 50px;display:flex;flex-direction:column;">
@@ -917,8 +1022,8 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ SLIDE 26 ありがとう -->
-<section data-label="26 ありがとう" data-screen-label="26 ありがとう" data-speaker-notes="2回シリーズの締めくくり。修了感を出す。手紙の比喩で持ち帰り感を演出。" style="background:linear-gradient(180deg,#1f4d3b 0%,#3a6d4f 35%,#ef8550 80%,#f3c64a 100%);color:#fbf6e4;overflow:hidden;">
+<!-- ════════════════════════════════════════════════════ SLIDE 30 ありがとう -->
+<section data-label="30 ありがとう" data-screen-label="30 ありがとう" data-speaker-notes="2回シリーズの締めくくり。修了感を出す。手紙の比喩で持ち帰り感を演出。" style="background:linear-gradient(180deg,#1f4d3b 0%,#3a6d4f 35%,#ef8550 80%,#f3c64a 100%);color:#fbf6e4;overflow:hidden;">
   <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
     <div style="position:absolute;top:18%;left:10%;width:3px;height:3px;background:#fff;border-radius:50%;animation:shimmer 3s ease-in-out infinite;"></div>
     <div style="position:absolute;top:8%;left:60%;width:4px;height:4px;background:#fff;border-radius:50%;animation:shimmer 2.4s ease-in-out infinite;animation-delay:.6s;"></div>
